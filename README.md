@@ -4,8 +4,8 @@ build status icon
 coverage status icon
 
 ### Screenshots
-![Image1](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/one.jpg)
-![Image2](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/two.jpg)
+[![Build Status](https://travis-ci.org/bchiatt/cap-runner.svg)](https://travis-ci.org/bchiatt/cap-runner)
+[![Coverage Status](https://coveralls.io/repos/bchiatt/cap-runner/badge.png)](https://coveralls.io/r/bchiatt/cap-runner)
 
 ### Description
 write a description about your project
