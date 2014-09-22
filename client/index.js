@@ -1,17 +1,20 @@
 (function(){
   'use strict';
 
-  angular.module('mean-template', ['ngRoute', 'LocalForageModule'])
+  angular.module('runner', ['ngRoute', 'LocalForageModule'])
   .config(['$routeProvider', '$httpProvider', '$localForageProvider', function($routeProvider, $httpProvider, $localForageProvider){
     $routeProvider
-    .when('/', {templateUrl:'/views/home/home.html', controller:'HomeCtrl'})
-    .when('/register', {templateUrl:'/views/register/register.html', controller:'RegisterCtrl'})
-    .when('/login',    {templateUrl:'/views/login/login.html',       controller:'LoginCtrl'})
+    .when('/dashboard', {templateUrl:'/views/dashboard/dashboard.html', controller:'DashboardCtrl'})
+    .when('/therapists', {templateUrl:'/views/therapists/therapists.html', controller:'TherapistsCtrl'})
+    .when('/clients', {templateUrl:'/views/clients/clients.html', controller:'ClientsCtrl'})
+    .when('/schedule', {templateUrl:'/views/schedule/schedule.html', controller:'ScheduleCtrl'})
+    .when('/review', {templateUrl:'/views/review/review.html', controller:'ReviewCtrl'})
+    .when('/login', {templateUrl:'/views/home/home.html', controller:'HomeCtrl'})
     .when('/logout',   {templateUrl:'/views/logout/logout.html',     controller:'LogoutCtrl'})
-    .otherwise({redirectTo:'/'});
+    .otherwise({redirectTo:'/login'});
 
     $httpProvider.interceptors.push('HttpInterceptor');
-    $localForageProvider.config({name:'mean-template', storeName:'cache', version:1.0});
+    $localForageProvider.config({name:'runner', storeName:'cache', version:1.0});
   }]);
 })();
 

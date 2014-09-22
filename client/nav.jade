@@ -6,14 +6,16 @@
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/') MEAN Template
+      a.navbar-brand(href='/#/dashboard') Runner
 
     .collapse.navbar-collapse#bs-navbar-collapse
       ul.nav.navbar-nav.navbar-right(ng-hide='email')
-        li: a(href='/#/') Home
-        li: a(href='/#/register') Register
-        li: a(href='/#/login') Login
       ul.nav.navbar-nav.navbar-right(ng-show='email')
-        li: a(href='/#/') Home
-        li: a(href='/#/logout') {{email}}
+        li: a(href='/#/dashboard') Dashboard
+        li: a(href='/#/clients') Clients
+        li: a(href='/#/therapists') Therapists
+        li: a(href='/#/schedule') Schedule
+        li: a(href='/#/review') Review
+        li: a(href='/#/logout') Logout
+        li: a(href='') {{email}}
 

@@ -1,15 +1,47 @@
 (function(){
   'use strict';
 
-  angular.module('mean-template')
-  .controller('HomeCtrl', ['$scope', '$interval', 'Home', function($scope, $interval, Home){
-    Home.getMessage().then(function(response){
-      $scope.mean = response.data.mean;
+  angular.module('runner')
+  .controller('HomeCtrl', ['$scope', '$location', 'Home', 'User', function($scope, $location, Home, User){
+    $scope.regForm = true;
+    $scope.logForm = true;
 
-      $interval(function(){
-        $scope.mean = _.shuffle($scope.mean);
-      }, 500);
-    });
+    $scope.toggleReg = function(){
+      $scope.regForm = !!!$scope.regForm;
+    };
+
+    $scope.toggleLog = function(){
+      $scope.logForm = !!!$scope.logForm;
+    };
+
+    function regSuccess(response){
+      toastr.success('User successfully registered. Please login.');
+      $location.path('/');
+    }
+
+    function regFailure(response){
+      toastr.error('Error during user registration, try again.');
+      $scope.user = {};
+    }
+
+    $scope.register = function(){
+      User.register($scope.user).then(regSuccess, regFailure);
+    };
+
+    function success(response){
+      toastr.success('User successfully logged in.');
+      $location.path('/dashboard');
+    }
+
+    function failure(response){
+      toastr.error('Error during user login, try again.');
+      $scope.user = {};
+    }
+
+    $scope.login = function(){
+      User.login($scope.user).then(success, failure);
+    };
+
   }]);
 })();
 
