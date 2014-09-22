@@ -1,11 +1,9 @@
 ## name of project
 ### Code Badges
-build status icon
-coverage status icon
-
-### Screenshots
 [![Build Status](https://travis-ci.org/bchiatt/cap-runner.svg)](https://travis-ci.org/bchiatt/cap-runner)
 [![Coverage Status](https://coveralls.io/repos/bchiatt/cap-runner/badge.png)](https://coveralls.io/r/bchiatt/cap-runner)
+
+### Screenshots
 
 ### Description
 write a description about your project
