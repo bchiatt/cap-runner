@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('mean-template')
+  angular.module('runner')
   .factory('User', ['$http', function($http){
 
     function register(user){

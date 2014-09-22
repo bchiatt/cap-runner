@@ -2,9 +2,8 @@
   'use strict';
 
   angular.module('runner')
-  .factory('Home', ['$http', function($http){
+  .controller('TherapistsCtrl', ['$scope', function($scope){
 
-    return {};
   }]);
 })();
 

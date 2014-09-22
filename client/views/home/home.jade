@@ -1,4 +1,32 @@
-h3 The MEAN Stack
-ul(ng-show='mean')
-  li(ng-repeat='technology in mean') {{technology}}
+.row
+  .col-xs-4
+  .col-xs-4
+    #login(ng-show='logForm')
+      h3 Login
+      h6: a(href='', ng-click='toggleLog(); toggleReg()') Register?
+      form(role='form', novalidate, name='userForm')
+        .form-group
+          label(for='email') Email
+          input.form-control#email(type='email', name='email', ng-model='user.email', autofocus, required)
+        .form-group
+          label(for='password') Password
+          input.form-control#password(type='password', name='password', ng-model='user.password', required, ng-minlength='3')
+        button.btn.btn-primary(ng-show='userForm.$valid', ng-click='login()') Login
+  .col-xs-4
+
+.row
+  .col-xs-4
+  .col-xs-4
+    #register(ng-hide='regForm')
+        h3 Register
+        h6: a(href='', ng-click='toggleReg(); toggleLog()') Login?
+        form(role='form', novalidate, name='userForm')
+          .form-group
+            label(for='email') Email
+            input.form-control#email(type='email', name='email', ng-model='user.email', autofocus, required)
+          .form-group
+            label(for='password') Password
+            input.form-control#password(type='password', name='password', ng-model='user.password', required, ng-minlength='3')
+          button.btn.btn-primary(ng-show='userForm.$valid', ng-click='register()') Register
+    .col-xs-4
 
