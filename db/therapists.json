@@ -1,0 +1,148 @@
+{
+  "_id" : {"$oid":"b00000000000000000000001"},
+  "name":"Cristen Brown",
+  "discipline" : "PT",
+  "isTherapist": true,
+  "productivity" : .80,
+  "isFullTime" : true,
+  "lateEvals" : {
+    "Mon" : false,
+    "Tue" : true,
+    "Wed" : false,
+    "Thu" : true,
+    "Fri" : true
+  },
+  "schedule" : {
+    "Mon" : {
+      "start" : 28800,
+      "mins" : 480
+    },
+    "Tue" : {
+      "start" : 32400,
+      "mins" : 480
+    },
+    "Wed" : {
+      "start" : 28800,
+      "mins" : 480
+    },
+    "Thu" : {
+      "start" : 32400,
+      "mins" : 480
+    },
+    "Fri" : {
+      "start" : 28800,
+      "mins" : 480
+    }
+  }
+}
+{
+  "_id" : {"$oid":"b00000000000000000000002"},
+  "name":"Tami Warner",
+  "discipline" : "PT",
+  "isTherapist": true,
+  "productivity" : .80,
+  "isFullTime" : true,
+  "lateEvals" : {
+    "Mon" : true,
+    "Tue" : false,
+    "Wed" : true,
+    "Thu" : false,
+    "Fri" : true
+  },
+  "schedule" : {
+    "Mon" : {
+      "start" : 32400,
+      "mins" : 480
+    },
+    "Tue" : {
+      "start" : 28800,
+      "mins" : 480
+    },
+    "Wed" : {
+      "start" : 32400,
+      "mins" : 480
+    },
+    "Thu" : {
+      "start" : 28800,
+      "mins" : 480
+    },
+    "Fri" : {
+      "start" : 28800,
+      "mins" : 480
+    }
+  }
+}
+{
+  "_id" : {"$oid":"b00000000000000000000003"},
+  "name":"Keith Chitwood",
+  "discipline" : "OT",
+  "isTherapist": false,
+  "productivity" : .85,
+  "isFullTime" : false,
+  "lateEvals" : {
+    "Mon" : false,
+    "Tue" : false,
+    "Wed" : false,
+    "Thu" : false,
+    "Fri" : false
+  },
+  "schedule" : {
+    "Mon" : {
+      "start" : null,
+      "mins" : null
+    },
+    "Tue" : {
+      "start" : null,
+      "mins" : null
+    },
+    "Wed" : {
+      "start" : null,
+      "mins" : null
+    },
+    "Thu" : {
+      "start" : null,
+      "mins" : null
+    },
+    "Fri" : {
+      "start" : null,
+      "mins" : null
+    }
+  }
+}
+{
+  "_id" : {"$oid":"b00000000000000000000004"},
+  "name":"Tameshia Martin",
+  "discipline" : "ST",
+  "isTherapist": true,
+  "productivity" : .75,
+  "isFullTime" : true,
+  "lateEvals" : {
+    "Mon" : false,
+    "Tue" : false,
+    "Wed" : false,
+    "Thu" : false,
+    "Fri" : false
+  },
+  "schedule" : {
+    "Mon" : {
+      "start" : 28800,
+      "mins" : 480
+    },
+    "Tue" : {
+      "start" : 28800,
+      "mins" : 480
+    },
+    "Wed" : {
+      "start" : 28800,
+      "mins" : 480
+    },
+    "Thu" : {
+      "start" : 28800,
+      "mins" : 480
+    },
+    "Fri" : {
+      "start" : 28800,
+      "mins" : 480
+    }
+  }
+}
