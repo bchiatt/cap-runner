@@ -1,0 +1,240 @@
+{
+  "_id"         : {"$oid":"a00000000000000000000001"},
+  "clientId"    : {"$oid":"c00000000000000000000001"},
+  "therapistId" : {"$oid":"b00000000000000000000001"},
+  "txDate"      : {"$date":1411483032848},
+  "mins"        : 60,
+  "discipline"  : "PT",
+  "alerts"      : {
+    "isEval"      : false,
+    "isRecert"    : false,
+    "isWeekly"    : false,
+    "isDC"        : false,
+    "isThirdWk"   : false,
+    "isCritical"  : false
+  },
+  "isArchived"  : false,
+  "review"      : {
+    "isNote"      : false,
+    "isMins"      : false,
+    "isDC"        : false,
+    "isRC"        : false,
+    "isWkly"      : false
+  }
+}
+{
+  "_id"         : {"$oid":"a00000000000000000000002"},
+  "clientId"    : {"$oid":"c00000000000000000000001"},
+  "therapistId" : {"$oid":"b00000000000000000000001"},
+  "txDate"      : {"$date":1411483032848},
+  "mins"        : 60,
+  "discipline"  : "PT",
+  "alerts"      : {
+    "isEval"      : false,
+    "isRecert"    : false,
+    "isWeekly"    : false,
+    "isDC"        : false,
+    "isThirdWk"   : false,
+    "isCritical"  : false
+  },
+  "isArchived"  : false,
+  "review"      : {
+    "isNote"      : false,
+    "isMins"      : false,
+    "isDC"        : false,
+    "isRC"        : false,
+    "isWkly"      : false
+  }
+}
+{
+  "_id"         : {"$oid":"a00000000000000000000003"},
+  "clientId"    : {"$oid":"c00000000000000000000001"},
+  "therapistId" : {"$oid":"b00000000000000000000001"},
+  "txDate"      : {"$date":1411483032848},
+  "mins"        : 60,
+  "discipline"  : "PT",
+  "alerts"      : {
+    "isEval"      : false,
+    "isRecert"    : false,
+    "isWeekly"    : false,
+    "isDC"        : false,
+    "isThirdWk"   : false,
+    "isCritical"  : false
+  },
+  "isArchived"  : false,
+  "review"      : {
+    "isNote"      : false,
+    "isMins"      : false,
+    "isDC"        : false,
+    "isRC"        : false,
+    "isWkly"      : false
+  }
+}
+{
+  "_id"         : {"$oid":"a00000000000000000000004"},
+  "clientId"    : {"$oid":"c00000000000000000000001"},
+  "therapistId" : {"$oid":"b00000000000000000000001"},
+  "txDate"      : {"$date":1411483032848},
+  "mins"        : 60,
+  "discipline"  : "PT",
+  "alerts"      : {
+    "isEval"      : false,
+    "isRecert"    : false,
+    "isWeekly"    : false,
+    "isDC"        : false,
+    "isThirdWk"   : false,
+    "isCritical"  : false
+  },
+  "isArchived"  : false,
+  "review"      : {
+    "isNote"      : false,
+    "isMins"      : false,
+    "isDC"        : false,
+    "isRC"        : false,
+    "isWkly"      : false
+  }
+}
+{
+  "_id"         : {"$oid":"a00000000000000000000005"},
+  "clientId"    : {"$oid":"c00000000000000000000001"},
+  "therapistId" : {"$oid":"b00000000000000000000001"},
+  "txDate"      : {"$date":1411483032848},
+  "mins"        : 60,
+  "discipline"  : "PT",
+  "alerts"      : {
+    "isEval"      : false,
+    "isRecert"    : false,
+    "isWeekly"    : false,
+    "isDC"        : false,
+    "isThirdWk"   : false,
+    "isCritical"  : false
+  },
+  "isArchived"  : false,
+  "review"      : {
+    "isNote"      : false,
+    "isMins"      : false,
+    "isDC"        : false,
+    "isRC"        : false,
+    "isWkly"      : false
+  }
+}
+{
+  "_id"         : {"$oid":"a00000000000000000000006"},
+  "clientId"    : {"$oid":"c00000000000000000000001"},
+  "therapistId" : {"$oid":"b00000000000000000000001"},
+  "txDate"      : {"$date":1411483032848},
+  "mins"        : 60,
+  "discipline"  : "PT",
+  "alerts"      : {
+    "isEval"      : false,
+    "isRecert"    : false,
+    "isWeekly"    : false,
+    "isDC"        : false,
+    "isThirdWk"   : false,
+    "isCritical"  : false
+  },
+  "isArchived"  : false,
+  "review"      : {
+    "isNote"      : false,
+    "isMins"      : false,
+    "isDC"        : false,
+    "isRC"        : false,
+    "isWkly"      : false
+  }
+}
+{
+  "_id"         : {"$oid":"a00000000000000000000007"},
+  "clientId"    : {"$oid":"c00000000000000000000001"},
+  "therapistId" : {"$oid":"b00000000000000000000001"},
+  "txDate"      : {"$date":1411483032848},
+  "mins"        : 60,
+  "discipline"  : "PT",
+  "alerts"      : {
+    "isEval"      : false,
+    "isRecert"    : false,
+    "isWeekly"    : false,
+    "isDC"        : false,
+    "isThirdWk"   : false,
+    "isCritical"  : false
+  },
+  "isArchived"  : false,
+  "review"      : {
+    "isNote"      : false,
+    "isMins"      : false,
+    "isDC"        : false,
+    "isRC"        : false,
+    "isWkly"      : false
+  }
+}
+{
+  "_id"         : {"$oid":"a00000000000000000000008"},
+  "clientId"    : {"$oid":"c00000000000000000000001"},
+  "therapistId" : {"$oid":"b00000000000000000000001"},
+  "txDate"      : {"$date":1411483032848},
+  "mins"        : 60,
+  "discipline"  : "PT",
+  "alerts"      : {
+    "isEval"      : false,
+    "isRecert"    : false,
+    "isWeekly"    : false,
+    "isDC"        : false,
+    "isThirdWk"   : false,
+    "isCritical"  : false
+  },
+  "isArchived"  : false,
+  "review"      : {
+    "isNote"      : false,
+    "isMins"      : false,
+    "isDC"        : false,
+    "isRC"        : false,
+    "isWkly"      : false
+  }
+}
+{
+  "_id"         : {"$oid":"a00000000000000000000009"},
+  "clientId"    : {"$oid":"c00000000000000000000001"},
+  "therapistId" : {"$oid":"b00000000000000000000001"},
+  "txDate"      : {"$date":1411483032848},
+  "mins"        : 60,
+  "discipline"  : "PT",
+  "alerts"      : {
+    "isEval"      : false,
+    "isRecert"    : false,
+    "isWeekly"    : false,
+    "isDC"        : false,
+    "isThirdWk"   : false,
+    "isCritical"  : false
+  },
+  "isArchived"  : false,
+  "review"      : {
+    "isNote"      : false,
+    "isMins"      : false,
+    "isDC"        : false,
+    "isRC"        : false,
+    "isWkly"      : false
+  }
+}
+{
+  "_id"         : {"$oid":"a00000000000000000000010"},
+  "clientId"    : {"$oid":"c00000000000000000000001"},
+  "therapistId" : {"$oid":"b00000000000000000000001"},
+  "txDate"      : {"$date":1411483032848},
+  "mins"        : 60,
+  "discipline"  : "PT",
+  "alerts"      : {
+    "isEval"      : false,
+    "isRecert"    : false,
+    "isWeekly"    : false,
+    "isDC"        : false,
+    "isThirdWk"   : false,
+    "isCritical"  : false
+  },
+  "isArchived"  : false,
+  "review"      : {
+    "isNote"      : false,
+    "isMins"      : false,
+    "isDC"        : false,
+    "isRC"        : false,
+    "isWkly"      : false
+  }
+}

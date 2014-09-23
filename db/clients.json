@@ -1,0 +1,250 @@
+{
+  "_id"      : {"$oid":"c00000000000000000000001"},
+  "name"     : "John Doe",
+  "isActive" : true,
+  "returns"  : 2,
+  "photo"    : "photo.jpg",
+  "current"  : {
+    "admitDate"  : {"$date":1411483032848},
+    "room"       : "205A",
+    "insurance"  : "Medicare A",
+    "isRug"      : true,
+    "frequency"  : {
+      "low"        : 5,
+      "high"       : 7
+    },
+    "weeklyDay"  : "Tuesday",
+    "recertDate" : {"$date":1414040400000},
+    "dcDate"     : {"$date":1416722400000},
+    "types"      : {
+      "isPT"       : true,
+      "isOT"       : true,
+      "isST"       : true
+    }
+  }
+}
+{
+  "_id" : {"$oid":"c00000000000000000000002"},
+  "name":"Jane Doe",
+  "isActive":true,
+  "returns" : 2,
+  "photo" : "photo1.jpg",
+  "current" : {
+    "admitDate" : {"$date":1411483032848},
+    "room" : "207A",
+    "insurance" : "Medicare A",
+    "isRug" : true,
+    "frequency" : {
+      "low" : 5,
+      "high" : 7
+    },
+    "weeklyDay" : "Thursday",
+    "recertDate" : {"$date":1414040400000},
+    "dcDate" : {"$date":1416722400000},
+    "types" : {
+      "isPT" : true,
+      "isOT" : true,
+      "isST" : false
+    }
+  }
+}
+{
+  "_id" : {"$oid":"c00000000000000000000003"},
+  "name":"Bob Aol",
+  "isActive":true,
+  "returns" : 6,
+  "photo" : "photo2.jpg",
+  "current" : {
+    "admitDate" : {"$date":1411483032848},
+    "room" : "209A",
+    "insurance" : "Medicare A",
+    "isRug" : true,
+    "frequency" : {
+      "low" : 5,
+      "high" : 7
+    },
+    "weeklyDay" : "Monday",
+    "recertDate" : {"$date":1414040400000},
+    "dcDate" : {"$date":1416722400000},
+    "types" : {
+      "isPT" : true,
+      "isOT" : true,
+      "isST" : true
+    }
+  }
+}
+{
+  "_id" : {"$oid":"c00000000000000000000004"},
+  "name":"Jill Aol",
+  "isActive":true,
+  "returns" : 0,
+  "photo" : "photo3.jpg",
+  "current" : {
+    "admitDate" : {"$date":1411483032848},
+    "room" : "205B",
+    "insurance" : "Medicare A",
+    "isRug" : true,
+    "frequency" : {
+      "low" : 5,
+      "high" : 7
+    },
+    "weeklyDay" : "Friday",
+    "recertDate" : {"$date":1414040400000},
+    "dcDate" : {"$date":1416722400000},
+    "types" : {
+      "isPT" : true,
+      "isOT" : true,
+      "isST" : true
+    }
+  }
+}
+{
+  "_id" : {"$oid":"c00000000000000000000005"},
+  "name":"Michael Scott",
+  "isActive":true,
+  "returns" : 2,
+  "photo" : "photo4.jpg",
+  "current" : {
+    "admitDate" : {"$date":1411483032848},
+    "room" : "207B",
+    "insurance" : "Medicare A",
+    "isRug" : true,
+    "frequency" : {
+      "low" : 5,
+      "high" : 7
+    },
+    "weeklyDay" : "Tuesday",
+    "recertDate" : {"$date":1414040400000},
+    "dcDate" : {"$date":1416722400000},
+    "types" : {
+      "isPT" : true,
+      "isOT" : true,
+      "isST" : false
+    }
+  }
+}
+{
+  "_id" : {"$oid":"c00000000000000000000006"},
+  "name":"Bob Jones",
+  "isActive":true,
+  "returns" : 3,
+  "photo" : "photo5.jpg",
+  "current" : {
+    "admitDate" : {"$date":1411483032848},
+    "room" : "209B",
+    "insurance" : "Medicare A",
+    "isRug" : true,
+    "frequency" : {
+      "low" : 5,
+      "high" : 7
+    },
+    "weeklyDay" : "Thursday",
+    "recertDate" : {"$date":1414040400000},
+    "dcDate" : {"$date":1416722400000},
+    "types" : {
+      "isPT" : true,
+      "isOT" : true,
+      "isST" : true
+    }
+  }
+}
+{
+  "_id" : {"$oid":"c00000000000000000000007"},
+  "name":"Jack Sparrow",
+  "isActive":true,
+  "returns" : 1,
+  "photo" : "photo6.jpg",
+  "current" : {
+    "admitDate" : {"$date":1411483032848},
+    "room" : "305A",
+    "insurance" : "Medicare A",
+    "isRug" : true,
+    "frequency" : {
+      "low" : 5,
+      "high" : 7
+    },
+    "weeklyDay" : "Wednesday",
+    "recertDate" : {"$date":1414040400000},
+    "dcDate" : {"$date":1416722400000},
+    "types" : {
+      "isPT" : true,
+      "isOT" : true,
+      "isST" : true
+    }
+  }
+}
+{
+  "_id" : {"$oid":"c00000000000000000000008"},
+  "name":"Donald Duck",
+  "isActive":true,
+  "returns" : 8,
+  "photo" : "photo7.jpg",
+  "current" : {
+    "admitDate" : {"$date":1411483032848},
+    "room" : "305B",
+    "insurance" : "Medicare A",
+    "isRug" : true,
+    "frequency" : {
+      "low" : 5,
+      "high" : 7
+    },
+    "weeklyDay" : "Monday",
+    "recertDate" : {"$date":1414040400000},
+    "dcDate" : {"$date":1416722400000},
+    "types" : {
+      "isPT" : true,
+      "isOT" : false,
+      "isST" : false
+    }
+  }
+}
+{
+  "_id" : {"$oid":"c00000000000000000000009"},
+  "name":"Daffy Duck",
+  "isActive":false,
+  "returns" : 2,
+  "photo" : "photo8.jpg",
+  "current" : {
+    "admitDate" : {},
+    "room" : null,
+    "insurance" : null,
+    "isRug" : false,
+    "frequency" : {
+      "low" : null,
+      "high" : null
+    },
+    "weeklyDay" : "",
+    "recertDate" : {},
+    "dcDate" : {"$date":1416722400000},
+    "types" : {
+      "isPT" : false,
+      "isOT" : false,
+      "isST" : false
+    }
+  }
+}
+{
+  "_id" : {"$oid":"c00000000000000000000010"},
+  "name":"Winston Churchill",
+  "isActive":true,
+  "returns" : 2,
+  "photo" : "photo9.jpg",
+  "current" : {
+    "admitDate" : {"$date":1411483032848},
+    "room" : "309A",
+    "insurance" : "Medicare A",
+    "isRug" : true,
+    "frequency" : {
+      "low" : 5,
+      "high" : 7
+    },
+    "weeklyDay" : "Tuesday",
+    "recertDate" : {"$date":1414040400000},
+    "dcDate" : {"$date":1416722400000},
+    "types" : {
+      "isPT" : true,
+      "isOT" : true,
+      "isST" : true
+    }
+  }
+}
