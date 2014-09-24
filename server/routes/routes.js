@@ -7,7 +7,9 @@ var morgan         = require('morgan'),
     RedisStore     = require('connect-redis')(session),
     debug          = require('../lib/debug'),
     security       = require('../lib/security'),
-    home           = require('../controllers/home'),
+    clients        = require('../controllers/clients'),
+    therapists     = require('../controllers/therapists'),
+    treatments     = require('../controllers/treatments'),
     users          = require('../controllers/users');
 
 module.exports = function(app, express){
@@ -21,11 +23,19 @@ module.exports = function(app, express){
   app.use(security.authenticate);
   app.use(debug.info);
 
-  app.get('/home', home.index);
   app.post('/register', users.register);
   app.post('/login', users.login);
 
   app.use(security.bounce);
+  app.get('/clients', clients.index);
+  app.post('/clients', clients.update);
+  app.delete('/clients/:id', clients.remove);
+  app.post('/clients/photo', clients.photo);
+  app.get('/therapists', therapists.index);
+  app.post('/therapists', therapists.update);
+  app.delete('/therapists/:id', therapists.remove);
+  app.post('/therapists/photo', therapists.photo);
+  app.get('/schedule', treatments.index);
   app.delete('/logout', users.logout);
 
   console.log('Express: Routes Loaded');

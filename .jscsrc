@@ -32,7 +32,6 @@
   "disallowTrailingWhitespace": true,
   "disallowTrailingComma": true,
   "requireLineFeedAtFileEnd": true,
-  "requireCapitalizedConstructors": true,
   "requireDotNotation": true,
   "disallowNewlineBeforeBlockStatements": true
 }

@@ -1,35 +1,37 @@
 {
   "_id" : {"$oid":"b00000000000000000000001"},
+  "userId" : {"$oid":"000000000000000000000001"},
   "name":"Cristen Brown",
   "discipline" : "PT",
   "isTherapist": true,
-  "productivity" : .80,
+  "productivity" : 80,
   "isFullTime" : true,
+  "photo"      : "/assets/img/default.jpg",
   "lateEvals" : {
-    "Mon" : false,
-    "Tue" : true,
-    "Wed" : false,
-    "Thu" : true,
-    "Fri" : true
+    "mon" : false,
+    "tue" : true,
+    "wed" : false,
+    "thu" : true,
+    "fri" : true
   },
   "schedule" : {
-    "Mon" : {
+    "mon" : {
       "start" : 28800,
       "mins" : 480
     },
-    "Tue" : {
+    "tue" : {
       "start" : 32400,
       "mins" : 480
     },
-    "Wed" : {
+    "wed" : {
       "start" : 28800,
       "mins" : 480
     },
-    "Thu" : {
+    "thu" : {
       "start" : 32400,
       "mins" : 480
     },
-    "Fri" : {
+    "fri" : {
       "start" : 28800,
       "mins" : 480
     }
@@ -37,36 +39,38 @@
 }
 {
   "_id" : {"$oid":"b00000000000000000000002"},
+  "userId" : {"$oid":"000000000000000000000001"},
   "name":"Tami Warner",
   "discipline" : "PT",
   "isTherapist": true,
-  "productivity" : .80,
+  "productivity" : 80,
   "isFullTime" : true,
+  "photo"      : "/assets/img/default.jpg",
   "lateEvals" : {
-    "Mon" : true,
-    "Tue" : false,
-    "Wed" : true,
-    "Thu" : false,
-    "Fri" : true
+    "mon" : true,
+    "tue" : false,
+    "wed" : true,
+    "thu" : false,
+    "fri" : true
   },
   "schedule" : {
-    "Mon" : {
+    "mon" : {
       "start" : 32400,
       "mins" : 480
     },
-    "Tue" : {
+    "tue" : {
       "start" : 28800,
       "mins" : 480
     },
-    "Wed" : {
+    "wed" : {
       "start" : 32400,
       "mins" : 480
     },
-    "Thu" : {
+    "thu" : {
       "start" : 28800,
       "mins" : 480
     },
-    "Fri" : {
+    "fri" : {
       "start" : 28800,
       "mins" : 480
     }
@@ -74,36 +78,38 @@
 }
 {
   "_id" : {"$oid":"b00000000000000000000003"},
+  "userId" : {"$oid":"000000000000000000000001"},
   "name":"Keith Chitwood",
   "discipline" : "OT",
   "isTherapist": false,
-  "productivity" : .85,
+  "productivity" : 85,
   "isFullTime" : false,
+  "photo"      : "/assets/img/default.jpg",
   "lateEvals" : {
-    "Mon" : false,
-    "Tue" : false,
-    "Wed" : false,
-    "Thu" : false,
-    "Fri" : false
+    "mon" : false,
+    "tue" : false,
+    "wed" : false,
+    "thu" : false,
+    "fri" : false
   },
   "schedule" : {
-    "Mon" : {
+    "mon" : {
       "start" : null,
       "mins" : null
     },
-    "Tue" : {
+    "tue" : {
       "start" : null,
       "mins" : null
     },
-    "Wed" : {
+    "wed" : {
       "start" : null,
       "mins" : null
     },
-    "Thu" : {
+    "thu" : {
       "start" : null,
       "mins" : null
     },
-    "Fri" : {
+    "fri" : {
       "start" : null,
       "mins" : null
     }
@@ -111,36 +117,38 @@
 }
 {
   "_id" : {"$oid":"b00000000000000000000004"},
+  "userId" : {"$oid":"000000000000000000000002"},
   "name":"Tameshia Martin",
   "discipline" : "ST",
   "isTherapist": true,
-  "productivity" : .75,
+  "productivity" : 75,
   "isFullTime" : true,
+  "photo"      : "/assets/img/default.jpg",
   "lateEvals" : {
-    "Mon" : false,
-    "Tue" : false,
-    "Wed" : false,
-    "Thu" : false,
-    "Fri" : false
+    "mon" : false,
+    "tue" : false,
+    "wed" : false,
+    "thu" : false,
+    "fri" : false
   },
   "schedule" : {
-    "Mon" : {
+    "mon" : {
       "start" : 28800,
       "mins" : 480
     },
-    "Tue" : {
+    "tue" : {
       "start" : 28800,
       "mins" : 480
     },
-    "Wed" : {
+    "wed" : {
       "start" : 28800,
       "mins" : 480
     },
-    "Thu" : {
+    "thu" : {
       "start" : 28800,
       "mins" : 480
     },
-    "Fri" : {
+    "fri" : {
       "start" : 28800,
       "mins" : 480
     }

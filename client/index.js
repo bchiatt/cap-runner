@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('runner', ['ngRoute', 'LocalForageModule'])
+  angular.module('runner', ['ngRoute', 'LocalForageModule', 'ngTable', 'angularFileUpload'])
   .config(['$routeProvider', '$httpProvider', '$localForageProvider', function($routeProvider, $httpProvider, $localForageProvider){
     $routeProvider
     .when('/dashboard', {templateUrl:'/views/dashboard/dashboard.html', controller:'DashboardCtrl'})
