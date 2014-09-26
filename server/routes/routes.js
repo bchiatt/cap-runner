@@ -10,6 +10,7 @@ var morgan         = require('morgan'),
     clients        = require('../controllers/clients'),
     therapists     = require('../controllers/therapists'),
     treatments     = require('../controllers/treatments'),
+    schedule       = require('../controllers/schedule'),
     users          = require('../controllers/users');
 
 module.exports = function(app, express){
@@ -27,15 +28,22 @@ module.exports = function(app, express){
   app.post('/login', users.login);
 
   app.use(security.bounce);
-  app.get('/clients', clients.index);
-  app.post('/clients', clients.update);
+  app.get('/clients/:id/rug', clients.rug);
   app.delete('/clients/:id', clients.remove);
+  app.get('/clients', clients.index);
+  app.post('/clients/rug', clients.updateRug);
+  app.post('/clients', clients.update);
   app.post('/clients/photo', clients.photo);
   app.get('/therapists', therapists.index);
   app.post('/therapists', therapists.update);
   app.delete('/therapists/:id', therapists.remove);
   app.post('/therapists/photo', therapists.photo);
-  app.get('/schedule', treatments.index);
+  app.post('/schedule/new', schedule.create);
+  app.post('/schedule', schedule.futureDate);
+  app.get('/treatments', treatments.getPast);
+  app.post('/treatments', treatments.archive);
+  app.put('/treatments', treatments.save);
+  app.delete('/treatments/:id', treatments.remove);
   app.delete('/logout', users.logout);
 
   console.log('Express: Routes Loaded');

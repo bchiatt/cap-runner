@@ -1,2 +1,34 @@
 .row
-  h3 Review
+  .col-xs-3
+    h2 Review
+    .clearfix
+      pre {{tableParams.filter()['discipline'] | json}}
+      pre {{tableParams.filter()['name'] | json}}
+      pre {{tableParams.filter()['therapist'] | json}}
+      br
+      button.btn.btn-warning(ng-click="tableParams.sorting({})") Clear Sorting
+      br
+      button.btn.btn-warning(ng-click="tableParams.filter({})") Clear Filtering
+      button.btn.btn-default(ng-click='toggleArchived()') Archived
+      button.btn.btn-default(ng-click='toggleOpen()') Open
+      select.form-control(ng-model='tableParams.filter()[\'discipline\']', ng-options='tx.discipline as tx.discipline for tx in activeTxs | unique:"discipline"')
+      select.form-control(ng-model='tableParams.filter()[\'name\']', ng-options='tx.temp.client.name as tx.temp.client.name for tx in activeTxs | unique:"temp.client.name"')
+      select.form-control(ng-model='tableParams.filter()[\'temp.therapist\']', ng-options='tx.temp.therapist as tx.temp.therapist for tx in activeTxs | unique:"temp.therapist"')
+  .col-xs-1
+  .col-xs-8
+    .row
+      table.table(ng-table='tableParams', show-filter='false')
+        tr(ng-repeat='tx in $data')
+          td(data-title="'Date'", sortable="'txDate'") {{tx.txDate | date:'M/d/yy'}}
+          td(data-title="'Room'") {{tx.temp.client.current.room}}
+          td(data-title="'Client'", sortable="'name'", filter="{'name': 'select'}") {{tx.temp.client.name}}
+          td(data-title="'Dis.'", sortable="'discicpline'", filter="{'discipline':'select'}") {{tx.discipline}}
+          td(data-title="'Therapist'", sortable="'temp.therapist'", filter="{'temp.therapist': 'select'}"): input.form-control(type='text', ng-model='tx.temp.therapist', ng-readonly='true')
+          td(data-title="'Note?'"): input(type='checkbox', ng-model='tx.review.isNote')
+          td(data-title="'Mins'"): input.form-control(type='text', ng-model='tx.mins', ng-readonly='tx.review.isMins')
+          td(data-title="'Mins?'"): input(type='checkbox', ng-model='tx.review.isMins')
+          td(data-title="'Action'")
+            button.btn.btn-danger(type='button', ng-click='del($index)', ng-show='tx.review.isNote === false && tx.review.isMins === false') Delete
+            button.btn.btn-warning(type='button', ng-click='save($index)', ng-show='tx.review.isNote === false && tx.review.isMins === true || tx.review.isNote === true && tx.review.isMins === false') Save
+            button.btn.btn-primary(type='button', ng-click='arch($index)', ng-show='tx.review.isNote === true && tx.review.isMins ===true') Archive
+          td(data-title="'Hidden'", sortable="'isActive'", filter="{'isArchived': 'text'}") {{tx.isArchived}}

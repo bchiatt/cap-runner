@@ -2,21 +2,33 @@
   'use strict';
 
   angular.module('runner')
-  .factory('User', ['$http', function($http){
+  .factory('Treatment', ['$http', function($http){
 
-    function register(user){
-      return $http.post('/register', user);
+    function getFuture(date){
+      return $http.post('/schedule', date);
     }
 
-    function login(user){
-      return $http.post('/login', user);
+    function schedule(therapists){
+      return $http.post('/schedule/new', therapists);
     }
 
-    function logout(){
-      return $http.delete('/logout');
+    function getPast(){
+      return $http.get('/treatments');
     }
 
-    return {register:register, login:login, logout:logout};
+    function archive(tx){
+      return $http.post('/treatments', tx);
+    }
+
+    function save(tx){
+      return $http.put('/treatments', tx);
+    }
+
+    function remove(id){
+      return $http.delete('/treatments/' + id);
+    }
+
+    return {getFuture:getFuture, schedule:schedule, getPast:getPast, archive:archive, save:save, remove:remove};
   }]);
 })();
 

@@ -6,6 +6,7 @@
     $scope.clients = [];
     $scope.options = [{id: true, title: 'Active'}, {id: false, title: 'Inactive'}];
     $scope.edit    = false;
+    $scope.editRug = false;
     $scope.client  = {};
     $scope.current = {};
     $scope.wkDays  = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
@@ -18,6 +19,11 @@
 
     $scope.add = function(){
       $scope.toggleEdit();
+      if($scope.current){
+        Client.getRug($scope.display[$scope.index]._id).then(function(response){
+          $scope.current.rug = response.data.rug;
+        });
+      }
       Client.add($scope.client).then(function(response){
         $scope.clients = response.data.clients;
         $scope.tableParams.filter({});
@@ -37,12 +43,14 @@
 
     $scope.editClient = function(){
       $scope.client = $scope.current;
-      $scope.toggleEdit();
     };
 
     $scope.makeCurrent = function(index){
       $scope.current = $scope.display[index];
-      $scope.index   = $scope.display[index];
+      $scope.index   = index;
+      Client.getRug($scope.display[index]._id).then(function(response){
+        $scope.current.rug = response.data.rug;
+      });
     };
 
     $scope.cancel = function(){
@@ -57,6 +65,17 @@
       });
     };
 
+    $scope.toggleRug = function(){
+      $scope.editRug = !!!$scope.editRug;
+    };
+
+    $scope.saveRug = function(){
+      $scope.editRug = !!!$scope.editRug;
+      Client.saveRug($scope.current.rug).then(function(response){
+        toastr.success('Rug saved.');
+      });
+    };
+
     $scope.updateTable = function(){
       $scope.tableParams = new ngTableParams({
         page: 1,            // show first page
@@ -64,7 +83,7 @@
         filter :{
           isActive : 'true'
         },
-        sort: {
+        sorting: {
           name: 'asc'
         }
       },{

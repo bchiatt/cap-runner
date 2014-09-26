@@ -35,7 +35,6 @@
 
     $scope.editTherapist = function(){
       $scope.therapist = $scope.current;
-      $scope.toggleEdit();
     };
 
     $scope.makeCurrent = function(index){
@@ -44,7 +43,8 @@
     };
 
     $scope.cancel = function(){
-      $scope.toggleEdit();
+      //$('.nav-tabs > li:nth-child(3)').removeClass('active');
+      //$('.nav-tabs > li:nth-child(1)').addClss('active');
       $scope.therapist = null;
     };
 

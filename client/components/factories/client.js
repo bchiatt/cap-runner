@@ -8,15 +8,23 @@
       return $http.get('/clients');
     }
 
-    function add(therapist){
-      return $http.post('/clients', therapist);
+    function add(client){
+      return $http.post('/clients', client);
     }
 
-    function remove(therapistId){
-      return $http.delete('/clients/'+ therapistId);
+    function remove(clientId){
+      return $http.delete('/clients/' + clientId);
     }
 
-    return {all:all, add:add, remove:remove};
+    function getRug(clientId){
+      return $http.get('/clients/' + clientId + '/rug');
+    }
+
+    function saveRug(rug){
+      return $http.post('/clients/rug', rug);
+    }
+
+    return {all:all, add:add, remove:remove, getRug:getRug, saveRug:saveRug};
   }]);
 })();
 

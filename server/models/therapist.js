@@ -68,5 +68,56 @@ Therapist.photo = function(therapist, files, cb){
 
 };
 
+Therapist.getFuture = function(userId, date, cb){
+  var therapists        = {};
+
+  therapists.active = {pt: [], ot: [], st: []};
+  therapists.oncall = {pt: [], ot: [], st: []};
+
+  date = getDayOfWeek(date);
+
+  Therapist.all(userId, function(err, all){
+    all.forEach(function(therapist){
+      therapist.treatments = [];
+      if(therapist.isTherapist && therapist.schedule[date].mins){
+        therapist.schedule = therapist.schedule[date];
+        switch (therapist.discipline){
+          case 'PT':
+            therapists.active.pt.push(therapist);
+            break;
+          case 'OT':
+            therapists.active.ot.push(therapist);
+            break;
+          case 'ST':
+            therapists.active.st.push(therapist);
+            break;
+        }
+      }else{
+        switch (therapist.discipline){
+          case 'PT':
+            therapists.oncall.pt.push(therapist);
+            break;
+          case 'OT':
+            therapists.oncall.ot.push(therapist);
+            break;
+          case 'ST':
+            therapists.oncall.st.push(therapist);
+            break;
+        }
+      }
+    });
+    cb(err, therapists);
+  });
+};
+
 module.exports = Therapist;
 
+// Private helper functions
+function getDayOfWeek(date){
+  var days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'],
+      day  = new Date(date).getUTCDay();
+
+  date = days[day];
+
+  return date;
+}

@@ -1,6 +1,7 @@
 'use strict';
 
 var Client = require('../models/client'),
+    Rug    = require('../models/rug'),
     mp     = require('multiparty');
 
 exports.index = function(req, res){
@@ -30,6 +31,18 @@ exports.photo = function(req, res){
 
 exports.remove = function(req, res){
   Client.remove(req.params.id, function(){
+    res.status(200).end();
+  });
+};
+
+exports.rug = function(req, res){
+  Rug.findByClientId(req.params.id, function(err, rug){
+    res.send({rug:rug});
+  });
+};
+
+exports.updateRug = function(req, res){
+  Rug.update(req.body, function(){
     res.status(200).end();
   });
 };
