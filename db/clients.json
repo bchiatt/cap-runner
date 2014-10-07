@@ -1,9 +1,10 @@
 {
   "_id"      : {"$oid":"c00000000000000000000001"},
+  "userId" : {"$oid":"000000000000000000000001"},
   "name"     : "John Doe",
   "isActive" : true,
   "returns"  : 2,
-  "photo"    : "photo.jpg",
+  "photo"      : "/assets/img/default.jpg",
   "current"  : {
     "admitDate"  : {"$date":1411483032848},
     "room"       : "205A",
@@ -25,10 +26,11 @@
 }
 {
   "_id" : {"$oid":"c00000000000000000000002"},
+  "userId" : {"$oid":"000000000000000000000001"},
   "name":"Jane Doe",
   "isActive":true,
   "returns" : 2,
-  "photo" : "photo1.jpg",
+  "photo"      : "/assets/img/default.jpg",
   "current" : {
     "admitDate" : {"$date":1411483032848},
     "room" : "207A",
@@ -50,10 +52,11 @@
 }
 {
   "_id" : {"$oid":"c00000000000000000000003"},
+  "userId" : {"$oid":"000000000000000000000001"},
   "name":"Bob Aol",
   "isActive":true,
   "returns" : 6,
-  "photo" : "photo2.jpg",
+  "photo"      : "/assets/img/default.jpg",
   "current" : {
     "admitDate" : {"$date":1411483032848},
     "room" : "209A",
@@ -75,10 +78,11 @@
 }
 {
   "_id" : {"$oid":"c00000000000000000000004"},
+  "userId" : {"$oid":"000000000000000000000001"},
   "name":"Jill Aol",
   "isActive":true,
   "returns" : 0,
-  "photo" : "photo3.jpg",
+  "photo"      : "/assets/img/default.jpg",
   "current" : {
     "admitDate" : {"$date":1411483032848},
     "room" : "205B",
@@ -100,10 +104,11 @@
 }
 {
   "_id" : {"$oid":"c00000000000000000000005"},
+  "userId" : {"$oid":"000000000000000000000001"},
   "name":"Michael Scott",
   "isActive":true,
   "returns" : 2,
-  "photo" : "photo4.jpg",
+  "photo"      : "/assets/img/default.jpg",
   "current" : {
     "admitDate" : {"$date":1411483032848},
     "room" : "207B",
@@ -125,10 +130,11 @@
 }
 {
   "_id" : {"$oid":"c00000000000000000000006"},
+  "userId" : {"$oid":"000000000000000000000002"},
   "name":"Bob Jones",
   "isActive":true,
   "returns" : 3,
-  "photo" : "photo5.jpg",
+  "photo"      : "/assets/img/default.jpg",
   "current" : {
     "admitDate" : {"$date":1411483032848},
     "room" : "209B",
@@ -150,10 +156,11 @@
 }
 {
   "_id" : {"$oid":"c00000000000000000000007"},
+  "userId" : {"$oid":"000000000000000000000002"},
   "name":"Jack Sparrow",
   "isActive":true,
   "returns" : 1,
-  "photo" : "photo6.jpg",
+  "photo"      : "/assets/img/default.jpg",
   "current" : {
     "admitDate" : {"$date":1411483032848},
     "room" : "305A",
@@ -175,10 +182,11 @@
 }
 {
   "_id" : {"$oid":"c00000000000000000000008"},
+  "userId" : {"$oid":"000000000000000000000002"},
   "name":"Donald Duck",
   "isActive":true,
   "returns" : 8,
-  "photo" : "photo7.jpg",
+  "photo"      : "/assets/img/default.jpg",
   "current" : {
     "admitDate" : {"$date":1411483032848},
     "room" : "305B",
@@ -200,10 +208,11 @@
 }
 {
   "_id" : {"$oid":"c00000000000000000000009"},
+  "userId" : {"$oid":"000000000000000000000001"},
   "name":"Daffy Duck",
   "isActive":false,
   "returns" : 2,
-  "photo" : "photo8.jpg",
+  "photo"      : "/assets/img/default.jpg",
   "current" : {
     "admitDate" : {},
     "room" : null,
@@ -225,10 +234,11 @@
 }
 {
   "_id" : {"$oid":"c00000000000000000000010"},
+  "userId" : {"$oid":"000000000000000000000001"},
   "name":"Winston Churchill",
   "isActive":true,
   "returns" : 2,
-  "photo" : "photo9.jpg",
+  "photo"      : "/assets/img/default.jpg",
   "current" : {
     "admitDate" : {"$date":1411483032848},
     "room" : "309A",

@@ -1,8 +1,251 @@
 .row
-  h3 Clients
-.row
   .col-xs-3
-    button.btn.btn-primary Add Client
-  .col-xs-4
+    h2 Clients
+    br
+    button.btn.btn-primary(ng-click='init()') Add Client
+    br
+    table.table.table-hover(ng-table='tableParams', show-filter='true')
+      tbody
+        tr(ng-repeat='client in display', data-title='{{client.name}}', data-index='{{$index}}', ng-click='makeCurrent($index)'): a(href='')
+          td(data-title="'Name'", sortable='name', filter="{ 'name': 'text' }") {{client.name}}
+          td(data-title="'Status'", name="isActive", filter="{ 'isActive': 'select' }", filter-data="states($column)") {{(client.isActive) ? 'Active' : 'Inactive'}}
   .col-xs-1
-  .col-xs-4
+  .col-xs-8
+    .row(ng-show='current.name')
+      tabset(justified='true')
+        tab(heading='Profile')
+          h3 {{current.name}}
+          .img(style='background-image: url("{{current.photo}}")')
+        tab(heading='Rug')
+          .row(ng-show='current.name')
+            br
+            button.btn.btn-primary(type='button', ng-hide='editRug', ng-click='toggleRug()') Edit Rug
+            button.btn.btn-success(type='button', ng-show='editRug', ng-click='saveRug()') Save Rug
+
+            .heading
+              br
+              table.table.table-bordered.table-hover
+                thead
+                  tr
+                    th #
+                    th Date
+                    th Day
+                    th Type
+                    th PT
+                    th OT
+                    th ST
+                    th Total
+            .rug
+              table.table.table-bordered.table-hover
+                tbody
+                  tr(ng-show='editRug', ng-repeat='(key, value) in current.rug.calc')
+                    td.cell {{$index + 1}}
+                    td.cell {{key | date: 'MMM dd'}}
+                    td.cell {{key | date: 'EEE'}}
+                    td.cell
+                      table
+                        tr
+                          td.cell Proj
+                        tr
+                          td.cell Act
+                    td.cell
+                      table
+                        tr
+                          td.cell: input.form-control(type='number', ng-model='value.pt.proj')
+                        tr
+                          td.cell {{value.pt.actual}}
+                    td.cell
+                      table
+                        tr
+                          td.cell: input.form-control(type='number', ng-model='value.ot.proj')
+                        tr
+                          td.cell {{value.ot.actual}}
+                    td.cell
+                      table
+                        tr
+                          td.cell: input.form-control(type='number', ng-model='value.st.proj')
+                        tr
+                          td.cell {{value.st.actual}}
+                    td.cell
+                      table
+                        tr
+                          td.cell {{value.pt.proj + value.ot.proj + value.st.proj}}
+                        tr
+                          td.cell {{value.pt.actual + value.ot.actual + value.st.actual}}
+                  tr(ng-hide='editRug', ng-repeat='(key, value) in current.rug.calc')
+                    td.cell {{$index + 1}}
+                    td.cell {{key | date: 'MMM dd'}}
+                    td.cell {{key | date: 'EEE'}}
+                    td.cell
+                      table
+                        tr
+                          td.cell Projected
+                        tr
+                          td.cell Actual
+                    td.cell
+                      table
+                        tr
+                          td.cell {{value.pt.proj}}
+                        tr
+                          td.cell {{value.pt.actual}}
+                    td.cell
+                      table
+                        tr
+                          td.cell {{value.ot.proj}}
+                        tr
+                          td.cell {{value.ot.actual}}
+                    td.cell
+                      table
+                        tr
+                          td.cell {{value.st.proj}}
+                        tr
+                          td.cell {{value.st.actual}}
+                    td.cell
+                      table
+                        tr
+                          td.cell {{value.pt.proj + value.ot.proj + value.st.proj}}
+                        tr
+                        td.cell {{value.pt.actual + value.ot.actual + value.st.actual}}
+        tab(heading='Info')
+          | Client Info
+        tab(heading='Edit', ng-click='editClient()')
+          .row
+            h3 Edit Client
+            form.form(role='form', novalidate, name='editForm')
+              .row
+                .col-xs-6
+                  .form-group
+                    input(type='hidden', ng-model='client._id', ng-value='{{client._id}}')
+                  .form-group
+                    label(for='name') Name:
+                    input.form-control#name(required, ng-minlength='3', ng-model='client.name', type='text', name='name', autofocus)
+                  .form-group(ng-show='client._id')
+                    input(type='hidden', ng-model='curent._id')
+                    label(for='photo') Photo
+                    input.form-control#photo(type='file', ng-file-select='onFileSelect($files)', on-click='this.value = null')
+                  .form-group
+                    label Active:
+                  .form-group
+                    | &nbsp
+                    input#isActive(ng-model='client.isActive', type='checkbox')
+                    label(for='isActive') &nbsp Yes
+                  .form-group
+                    label Precautions:
+                  .form-group
+                    | &nbsp
+                    input#isHip(ng-model='client.precautions.isHip', type='checkbox')
+                    label(for='isHip') &nbsp Hip
+                  .form-group
+                    | &nbsp
+                    input#isVr(ng-model='client.precautions.isVr', type='checkbox')
+                    label(for='isVr') &nbsp VR
+                  .form-group
+                    | &nbsp
+                    input#isDm(ng-model='client.precautions.isDm', type='checkbox')
+                    label(for='isDm') &nbsp Diabetic
+                  .form-group
+                    | &nbsp
+                    input#isCoTx(ng-model='client.precautions.isCoTx', type='checkbox')
+                    label(for='isCoTx') &nbsp Co-Tx
+                  .form-group
+                    | &nbsp
+                    input#isIso(ng-model='client.precautions.isIso', type='checkbox')
+                    label(for='isIso') &nbsp Isolation
+                  .form-group
+                    | &nbsp
+                    input#isVent(ng-model='client.precautions.isVent', type='checkbox')
+                    label(for='isVent') &nbsp Vent
+                .col-xs-6(ng-show='client.isActive')
+                  .form-group
+                    label Describe Current Visit
+                  .form-group
+                    label(for='admitDate') Date of Admission:
+                    input.form-control#admitDate(ng-model='client.current.admitDate', type='date')
+                  .form-group
+                    label(for='room') Room:
+                    input.form-control#room(ng-model='client.current.room', type='string')
+                  .form-group
+                    label(for='insurance') Insurance:
+                    select.form-control#insurance(ng-model='client.current.insurance')
+                      option Medicare A
+                  .form-group
+                    | &nbsp
+                    input#isRug(ng-model='client.current.isRug', type='checkbox')
+                    label(for='isRug') &nbsp RUG
+                  .form-group
+                    label Disciplines:
+                  .form-group
+                    | &nbsp
+                    input#isPT(ng-model='isPT', type='checkbox')
+                    label(for='isPT') &nbsp PT
+                  .form-group(ng-show='isPT')
+                    label(for='ptEval') Eval Date:
+                    input.form-control#ptEval(ng-model='client.current.pt.evalDate', type='date')
+                    label(for='ptWkly') Weekly Day:
+                    select.form-control#ptWkly(ng-model='client.current.pt.wkly')
+                      option(value='') Select Day of the Week
+                      option(ng-repeat='day in wkDays') {{day}}
+                    label Frequency:
+                    select.form-control#ptMin(ng-model='client.current.pt.frequency.low')
+                      option(value='') Min Visits
+                      option(ng-repeat='num in wkNums') {{num}}
+                    br
+                    select.form-control#ptMax(ng-model='client.current.pt.frequency.high')
+                      option(value='') Max Visits
+                      option(ng-repeat='num in wkNums') {{num}}
+                    label(for='ptRc') Recert Date:
+                    input.form-control#ptRc(ng-model='client.current.pt.rcDate', type='date')
+                    label(for='ptDc') Discharge Date:
+                    input.form-control#ptDc(ng-model='client.current.pt.dcDate', type='date')
+                  .form-group
+                    | &nbsp
+                    input#isOT(ng-model='isOT', type='checkbox')
+                    label(for='isOT') &nbsp OT
+                  .form-group(ng-show='isOT')
+                    label(for='otEval') Date of Evaluation:
+                    input.form-control#otEval(ng-model='client.current.ot.evalDate', type='date')
+                    label(for='otWkly') Weekly Day:
+                    select.form-control#otWkly(ng-model='client.current.ot.wkly')
+                      option(value='') Select Day of the Week
+                      option(ng-repeat='day in wkDays') {{day}}
+                    label Frequency:
+                    select.form-control#otMin(ng-model='client.current.ot.frequency.low')
+                      option(value='') Min Visits
+                      option(ng-repeat='num in wkNums') {{num}}
+                    br
+                    select.form-control#otMax(ng-model='client.current.ot.frequency.high')
+                      option(value='') Max Visits
+                      option(ng-repeat='num in wkNums') {{num}}
+                    label(for='otRc') Recert Date:
+                    input.form-control#otRc(ng-model='client.current.ot.rcDate', type='date')
+                    label(for='otDc') Discharge Date:
+                    input.form-control#otDc(ng-model='client.current.ot.dcDate', type='date')
+                  .form-group
+                    | &nbsp
+                    input#isST(ng-model='isST', type='checkbox')
+                    label(for='isST') &nbsp ST
+                  .form-group(ng-show='isST')
+                    label(for='stEval') Date of Evaluation:
+                    input.form-control#stEval(ng-model='client.current.st.evalDate', type='date')
+                    label(for='stWkly') Weekly Day:
+                    select.form-control#stWkly(ng-model='client.current.st.wkly')
+                      option(value='') Select Day of the Week
+                      option(ng-repeat='day in wkDays') {{day}}
+                    label Frequency:
+                    select.form-control#stMin(ng-model='client.current.st.frequency.low')
+                      option(value='') Min Visits
+                      option(ng-repeat='num in wkNums') {{num}}
+                    br
+                    select.form-control#stMax(ng-model='client.current.st.frequency.high')
+                      option(value='') Max Visits
+                      option(ng-repeat='num in wkNums') {{num}}
+                    label(for='stRc') Recert Date:
+                    input.form-control#stRc(ng-model='client.current.st.rcDate', type='date')
+                    label(for='stDc') Discharge Date:
+                    input.form-control#stDc(ng-model='client.current.st.dcDate', type='date')
+
+              .row
+                button.btn.btn-warning(type='button', ng-click='cancel()') Cancel
+                | &nbsp &nbsp &nbsp
+                button.btn.btn-danger(type='button', ng-show='client._id', ng-click='remove()') Delete
+                button.btn.btn-primary.pull-right(type='submit', ng-show='editForm.$valid', ng-click='add()') Save Client

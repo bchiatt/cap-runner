@@ -1,2 +1,76 @@
 .row
-  h3 Schedule
+  .col-xs-3
+    h2 Schedule
+    form.form(role='form', novalidate, name='selectDate')
+      .form-group
+        label(for='date') Choose Date: &nbsp
+        input.form-control#date(type='date', ng-model='txDate', required, autfocus)
+      button.btn.btn-success(type='submit', ng-show='selectDate.$valid', ng-click='getFutureTreatments()') Get Treatments
+    b
+    label(ng-show='treatments') Add Therapist:
+    select.form-control#addTherapist(name='addTherapist', ng-model='addTherapist', ng-show='treatments')
+      option(value='') Choose Unscheduled
+      option(ng-repeat='therapist in therapists.oncall.pt', value='{{$index + \',\' + therapist.discipline}}') {{therapist.discipline}} {{therapist.name}}
+      option(ng-repeat='therapist in therapists.oncall.ot', value='{{$index + \',\' + therapist.discipline}}') {{therapist.discipline}} {{therapist.name}}
+      option(ng-repeat='therapist in therapists.oncall.st', value='{{$index + \',\' + therapist.discipline}}') {{therapist.discipline}} {{therapist.name}}
+    br
+    button.btn.btn-danger(type='submit', ng-click='scheduleTxs()', ng-hide='!treatments || treatments.pt.length || treatments.ot.length || treatments.st.length') Submit Schedule
+  .col-xs-1
+  .col-xs-8
+    .row(ng-show='treatments')
+      tabset(justified='true')
+        tab(heading='All')
+          h4 PT
+          .therapist(ng-repeat='therapist in therapists.active.pt')
+            h4 {{therapist.name}}
+            form.form.inline-form
+              label Add Treatment:
+              select.form-control(ng-model='tx.add', ng-show='treatments.pt.length')
+                option(ng-repeat='tx in treatments.pt', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
+            ul
+              li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
+          h4 OT
+          .therapist(ng-repeat='therapist in therapists.active.ot')
+            h4 {{therapist.name}}
+            form.form.inline-form
+              label Add Treatment:
+              select.form-control(ng-model='tx.add', ng-show='treatments.ot.length')
+                option(ng-repeat='tx in treatments.ot', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
+            ul
+              li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
+          h4 ST
+          .therapist(ng-repeat='therapist in therapists.active.st')
+            h4 {{therapist.name}}
+            form.form.inline-form
+              label Add Treatment:
+              select.form-control(ng-model='tx.add', ng-show='treatments.st.length')
+                option(ng-repeat='tx in treatments.st', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
+            ul
+              li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
+        tab(heading='PT')
+          .therapist(ng-repeat='therapist in therapists.active.pt')
+            h4 {{therapist.name}}
+            form.form.inline-form
+              label Add Treatment:
+              select.form-control(ng-model='tx.add')
+                option(ng-repeat='tx in treatments.pt', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
+            ul
+              li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
+        tab(heading='OT')
+          .therapist(ng-repeat='therapist in therapists.active.ot')
+            h4 {{therapist.name}}
+            form.form.inline-form
+              label Add Treatment:
+              select.form-control(ng-model='tx.add')
+                option(ng-repeat='tx in treatments.ot', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
+            ul
+              li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
+        tab(heading='ST')
+          .therapist(ng-repeat='therapist in therapists.active.st')
+            h4 {{therapist.name}}
+            form.form.inline-form
+              label Add Treatment:
+              select.form-control(ng-model='tx.add')
+                option(ng-repeat='tx in treatments.st', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
+            ul
+              li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
