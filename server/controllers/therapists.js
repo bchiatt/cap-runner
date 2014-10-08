@@ -9,6 +9,14 @@ exports.index = function(req, res){
   });
 };
 
+exports.create = function(req, res){
+  Therapist.create(req.user._id, req.body, function(){
+    Therapist.all(req.user._id, function(err, therapists){
+      res.send({therapists:therapists});
+    });
+  });
+};
+
 exports.update = function(req, res){
   Therapist.update(req.user._id, req.body, function(){
     Therapist.all(req.user._id, function(err, therapists){

@@ -6,7 +6,7 @@ html(ng-app='runner', lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     title Runner
     link(href='/vendor/bootstrap/dist/css/bootstrap.css', rel='stylesheet')
-    link(href='/vendor/fontawesome/css/font-awesome.css', rel='stylesheet')
+    link(href='/vendor/fontawesome/css/font-awesome.min.css', rel='stylesheet')
     link(href='/vendor/toastr/toastr.css', rel='stylesheet')
     link(href='/vendor/ng-table/ng-table.min.css', rel='stylesheet')
     link(href='/index.css', rel='stylesheet')
@@ -16,7 +16,7 @@ html(ng-app='runner', lang='en')
     link(href='/views/review/review.css', rel='stylesheet')
   body
     include nav
-    .container
+    .container-fluid
       .row
         .col-xs-12
           #container(ng-view)
@@ -49,5 +49,6 @@ html(ng-app='runner', lang='en')
     script(src='/components/factories/client.js')
     script(src='/components/factories/therapist.js')
     script(src='/components/factories/treatment.js')
+    script(src='/components/factories/rug.js')
     script(src='/components/factories/http-interceptor.js')
 

@@ -14,8 +14,10 @@
     .row(ng-show='current.name')
       tabset(justified='true')
         tab(heading='Profile')
-          h3 {{current.name}}
-          .img(style='background-image: url("{{current.photo}}")')
+          .col-xs-6
+            h3 {{current.name}}
+          .col-xs-6
+            .img(style='background-image: url("{{current.photo}}")')
         tab(heading='Info')
         tab(heading='Edit', ng-click='editTherapist()')
           .row

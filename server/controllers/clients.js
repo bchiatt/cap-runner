@@ -10,6 +10,14 @@ exports.index = function(req, res){
   });
 };
 
+exports.create = function(req, res){
+  Client.create(req.user._id, req.body, function(){
+    Client.all(req.user._id, function(err, clients){
+      res.send({clients:clients});
+    });
+  });
+};
+
 exports.update = function(req, res){
   Client.update(req.user._id, req.body, function(){
     Client.all(req.user._id, function(err, clients){
