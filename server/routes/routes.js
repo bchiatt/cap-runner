@@ -32,10 +32,12 @@ module.exports = function(app, express){
   app.delete('/clients/:id', clients.remove);
   app.get('/clients', clients.index);
   app.post('/clients/rug', clients.updateRug);
-  app.post('/clients', clients.update);
+  app.post('/clients', clients.create);
+  app.put('/clients', clients.update);
   app.post('/clients/photo', clients.photo);
   app.get('/therapists', therapists.index);
-  app.post('/therapists', therapists.update);
+  app.post('/therapists', therapists.create);
+  app.put('/therapists', therapists.update);
   app.delete('/therapists/:id', therapists.remove);
   app.post('/therapists/photo', therapists.photo);
   app.post('/schedule/new', schedule.create);

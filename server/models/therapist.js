@@ -12,7 +12,7 @@ function Therapist(userId, obj){
   this.productivity  = obj.productivity * 1;
   this.isTherapist   = (obj.isTherapist ? true : false);
   this.isFullTime    = (obj.isFullTime ? true : false);
-  this.photo         = obj.photo || '/assets/img/default.jpg';
+  this.photo         = '/assets/img/default.jpg';
   this.lateEvals     = {
                  mon : obj.lateEvals.mon || false,
                  tue : obj.lateEvals.tue || false,
@@ -36,8 +36,14 @@ Therapist.all = function(id, cb){
   Therapist.collection.find({userId:id}).toArray(cb);
 };
 
-Therapist.update = function(userId, obj, cb){
+Therapist.create = function(userId, obj, cb){
   obj = new Therapist(userId, obj);
+  Therapist.collection.save(obj, cb);
+};
+
+Therapist.update = function(obj, cb){
+  obj._id    = Mongo.ObjectID(obj._id);
+  obj.userId = Mongo.ObjectID(obj.userId);
   Therapist.collection.save(obj, cb);
 };
 

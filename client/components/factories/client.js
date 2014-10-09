@@ -12,6 +12,10 @@
       return $http.post('/clients', client);
     }
 
+    function update(client){
+      return $http.put('/clients', client);
+    }
+
     function remove(clientId){
       return $http.delete('/clients/' + clientId);
     }
@@ -24,7 +28,7 @@
       return $http.post('/clients/rug', rug);
     }
 
-    return {all:all, add:add, remove:remove, getRug:getRug, saveRug:saveRug};
+    return {all:all, add:add, update:update, remove:remove, getRug:getRug, saveRug:saveRug};
   }]);
 })();
 

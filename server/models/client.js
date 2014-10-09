@@ -10,11 +10,11 @@ function Client(id, o){
   this.userId      = Mongo.ObjectID(id);
   this.name        = o.name;
   this.isActive    = o.isActive || false;
-  this.photo       = o.photo || '/assets/img/default.jpg';
+  this.photo       = '/assets/img/default.jpg';
   this.precautions = o.precautions || {};
   if(o.current){
                 this.current     = {
-                                     admitDate : new Date(o.current.admitDate) || new Date(),
+                                     admitDate : new Date(o.current.admitDate) || null,
                                      room      : o.current.room || null,
                                      insurance : o.current.insurance || null,
                                      isRug     : o.current.isRug || null
@@ -73,8 +73,12 @@ Client.all = function(id, cb){
   Client.collection.find({userId:id}).toArray(cb);
 };
 
+Client.create = function(userId, obj, cb){
+  obj = new Client(userId, obj);
+  Client.collection.save(obj, cb);
+};
+
 Client.update = function(userId, obj, cb){
-  if(!obj._id){obj = new Client(userId, obj);}
   if(obj.rug){delete obj.rug;}
 
   obj._id         = Mongo.ObjectID(obj._id);
