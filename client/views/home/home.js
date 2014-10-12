@@ -2,9 +2,13 @@
   'use strict';
 
   angular.module('runner')
-  .controller('HomeCtrl', ['$scope', '$location', 'Home', 'User', function($scope, $location, Home, User){
+  .controller('HomeCtrl', ['$scope', '$location', '$localForage', 'Home', 'User', function($scope, $location, $localForage, Home, User){
     $scope.regForm = true;
     $scope.logForm = true;
+
+    $localForage.getItem('email').then(function(email){
+      $scope.email = email;
+    });
 
     $scope.toggleReg = function(){
       $scope.regForm = !!!$scope.regForm;

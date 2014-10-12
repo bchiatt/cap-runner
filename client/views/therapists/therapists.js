@@ -5,18 +5,19 @@
   .controller('TherapistsCtrl', ['$scope', '$q', '$filter', '$upload', 'ngTableParams', 'Therapist', function($scope, $q, $filter, $upload, ngTableParams, Therapist){
     $scope.therapists = [];
     $scope.options    = ['PT', 'OT', 'ST'];
-    $scope.edit       = false;
+    $scope.add        = false;
     $scope.therapist  = {};
-    $scope.current    = {};
+    $scope.general    = true;
 
     Therapist.all().then(function(response){
       $scope.therapists = response.data.therapists;
       $scope.updateTable();
     });
 
-    $scope.add = function(){
-      $scope.toggleEdit();
-      Therapist.add($scope.therapist).then(function(response){
+    $scope.save = function(){
+      $scope.general = true;
+      Therapist.update($scope.therapist).then(function(response){
+        toastr.success('Therapist saved.');
         $scope.therapists = response.data.therapists;
         $scope.tableParams.filter({});
         $scope.tableParams.sorting({name:'asc'});
@@ -24,34 +25,33 @@
     };
 
     $scope.init = function(){
-      $scope.toggleEdit();
-      $scope.current   = null;
-      $scope.therapist = null;
-    };
-
-    $scope.toggleEdit = function(){
-      $scope.edit = !!!$scope.edit;
-    };
-
-    $scope.editTherapist = function(){
-      $scope.therapist = $scope.current;
-    };
-
-    $scope.makeCurrent = function(index){
-      $scope.current = $scope.display[index];
-      $scope.index   = $scope.display[index];
+      $scope.therapist = {};
+      $scope.add       = true;
     };
 
     $scope.cancel = function(){
-      //$('.nav-tabs > li:nth-child(3)').removeClass('active');
-      //$('.nav-tabs > li:nth-child(1)').addClss('active');
-      $scope.therapist = null;
+      $scope.add = false;
+    };
+
+    $scope.create = function(){
+      Therapist.add($scope.therapist).then(function(response){
+        $scope.add = false;
+        $scope.therapists = response.data.therapists;
+        $scope.tableParams.filter({});
+        $scope.tableParams.sorting({name:'asc'});
+      });
+    };
+
+    $scope.makeCurrent = function(index){
+      $scope.add       = false;
+      $scope.therapist = $scope.display[index];
+      $scope.index     = $scope.display[index];
     };
 
     $scope.remove = function(){
-      $scope.toggleEdit();
       Therapist.remove($scope.therapist._id).then(function(response){
-        $scope.current = {};
+        $scope.index     = null;
+        $scope.therapist = {};
       });
     };
 
@@ -122,12 +122,12 @@
         method: 'POST',
         //headers: {'header-key': 'header-value'},
         //withCredentials: true,
-        data: {myObj: $scope.current._id},
+        data: {myObj: $scope.therapist._id},
         file: file
       }).progress(function(evt){
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
       }).success(function(data, status, headers, config){
-        $scope.current = data.therapist;
+        $scope.therapist = data.therapist;
       });
     };
 
