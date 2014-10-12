@@ -22,58 +22,103 @@
         tab(heading='All')
           h4 PT
           .therapist(ng-repeat='therapist in therapists.active.pt')
-            h4 {{therapist.name}} {{(therapist.txMins / therapist.schedule.mins) * 100 | number: 1}} %
-            hr
+            h4
+              a(href='', ng-click='edit([therapist._id])'): i.fa.fa-edit &nbsp
+              {{therapist.name}} {{(therapist.txMins / therapist.schedule.mins) * 100 | number: 1}}%
+            .form-inline(ng-show='editMins[therapist._id]')
+              label Work Mins Today: &nbsp
+              input.form-control(type='text', ng-model='therapist.schedule.mins')
+            .form-inline(ng-show='editMins[therapist._id]')
+              label Tx Mins Today: &nbsp &nbsp &nbsp
+              input.form-control(type='text', disabled, ng-model='therapist.txMins')
+            hr(ng-show='therapist.treatments[0]')
+            h5(ng-repeat='tx in therapist.treatments')
+              a(href='', ng-click='undoTx($index + \',\' + $parent.$index + \',\' + tx.discipline)'): i.fa.fa-remove
+              |  {{tx.room}} 
+              b {{tx.clientName}} 
+              | ({{tx.mins}})
+            hr(ng-hide='!treatments.pt.length')
             form.form.inline-form(ng-show='treatments.pt.length')
               label Add Treatment:
               select.form-control(ng-model='tx.add')
                 option(ng-repeat='tx in treatments.pt', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
-              hr
-            h5(ng-repeat='tx in therapist.treatments') {{tx.room}} {{tx.clientName}} {{tx.mins}} mins
           h4 OT
           .therapist(ng-repeat='therapist in therapists.active.ot')
-            h4 {{therapist.name}}
+            h4
+              a(href='', ng-click='edit([therapist._id])'): i.fa.fa-edit &nbsp
+              {{therapist.name}} {{(therapist.txMins / therapist.schedule.mins) * 100 | number: 1}}%
+            hr(ng-show='therapist.treatments[0]')
+            h5(ng-repeat='tx in therapist.treatments')
+              a(href='', ng-click='undoTx($index + \',\' + $parent.$index + \',\' + tx.discipline)'): i.fa.fa-remove
+              |  {{tx.room}} 
+              b {{tx.clientName}} 
+              | ({{tx.mins}})
+            hr(ng-hide='!treatments.ot.length')
             form.form.inline-form(ng-show='treatments.ot.length')
               label Add Treatment:
               select.form-control(ng-model='tx.add')
                 option(ng-repeat='tx in treatments.ot', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
-            ul
-              li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
-            h5(ng-repeat='tx in therapist.treatments') {{tx.room}} {{tx.clientName}} {{tx.mins}} mins
           h4 ST
           .therapist(ng-repeat='therapist in therapists.active.st')
-            h4 {{therapist.name}}
+            h4
+              a(href='', ng-click='edit([therapist._id])'): i.fa.fa-edit &nbsp
+              {{therapist.name}} {{(therapist.txMins / therapist.schedule.mins) * 100 | number: 1}}%
+            hr(ng-show='therapist.treatments[0]')
+            h5(ng-repeat='tx in therapist.treatments')
+              a(href='', ng-click='undoTx($index + \',\' + $parent.$index + \',\' + tx.discipline)'): i.fa.fa-remove
+              |  {{tx.room}} 
+              b {{tx.clientName}} 
+              | ({{tx.mins}})
+            hr(ng-hide='!treatments.st.length')
             form.form.inline-form(ng-show='treatments.st.length')
               label Add Treatment:
               select.form-control(ng-model='tx.add')
                 option(ng-repeat='tx in treatments.st', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
-            ul
-              li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
-            h5(ng-repeat='tx in therapist.treatments') {{tx.room}} {{tx.clientName}} {{tx.mins}} mins
         tab(heading='PT')
           .therapist(ng-repeat='therapist in therapists.active.pt')
-            h4 {{therapist.name}}
-            form.form.inline-form
+            h4
+              a(href='', ng-click='edit([therapist._id])'): i.fa.fa-edit &nbsp
+              {{therapist.name}} {{(therapist.txMins / therapist.schedule.mins) * 100 | number: 1}}%
+            hr(ng-show='therapist.treatments[0]')
+            h5(ng-repeat='tx in therapist.treatments')
+              a(href='', ng-click='undoTx($index + \',\' + $parent.$index + \',\' + tx.discipline)'): i.fa.fa-remove
+              |  {{tx.room}} 
+              b {{tx.clientName}} 
+              | ({{tx.mins}})
+            hr(ng-hide='!treatments.pt.length')
+            form.form.inline-form(ng-show='treatments.pt.length')
               label Add Treatment:
-              select.form-control(ng-model='tx.add', ng-show='treatments.pt.length')
+              select.form-control(ng-model='tx.add')
                 option(ng-repeat='tx in treatments.pt', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
-            ul
-              li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
         tab(heading='OT')
           .therapist(ng-repeat='therapist in therapists.active.ot')
-            h4 {{therapist.name}}
-            form.form.inline-form
+            h4
+              a(href='', ng-click='edit([therapist._id])'): i.fa.fa-edit &nbsp
+              {{therapist.name}} {{(therapist.txMins / therapist.schedule.mins) * 100 | number: 1}}%
+            hr(ng-show='therapist.treatments[0]')
+            h5(ng-repeat='tx in therapist.treatments')
+              a(href='', ng-click='undoTx($index + \',\' + $parent.$index + \',\' + tx.discipline)'): i.fa.fa-remove
+              |  {{tx.room}} 
+              b {{tx.clientName}} 
+              | ({{tx.mins}})
+            hr(ng-hide='!treatments.ot.length')
+            form.form.inline-form(ng-show='treatments.ot.length')
               label Add Treatment:
-              select.form-control(ng-model='tx.add', ng-show='treatments.ot.length')
+              select.form-control(ng-model='tx.add')
                 option(ng-repeat='tx in treatments.ot', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
-            ul
-              li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
         tab(heading='ST')
           .therapist(ng-repeat='therapist in therapists.active.st')
-            h4 {{therapist.name}}
-            form.form.inline-form
+            h4
+              a(href='', ng-click='edit([therapist._id])'): i.fa.fa-edit &nbsp
+              {{therapist.name}} {{(therapist.txMins / therapist.schedule.mins) * 100 | number: 1}}%
+            hr(ng-show='therapist.treatments[0]')
+            h5(ng-repeat='tx in therapist.treatments')
+              a(href='', ng-click='undoTx($index + \',\' + $parent.$index + \',\' + tx.discipline)'): i.fa.fa-remove
+              |  {{tx.room}} 
+              b {{tx.clientName}} 
+              | ({{tx.mins}})
+            hr(ng-hide='!treatments.st.length')
+            form.form.inline-form(ng-show='treatments.st.length')
               label Add Treatment:
-              select.form-control(ng-model='tx.add', ng-show='treatments.st.length')
+              select.form-control(ng-model='tx.add')
                 option(ng-repeat='tx in treatments.st', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
-            ul
-              li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
