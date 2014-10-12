@@ -1,4 +1,18 @@
-.row
+.row(ng-show='email')
+  .col-xs-2
+  .col-xs-8
+    h2 Welcome!
+    h3 Click the Dashboard tab to:
+    ul
+      li: h4 Add CLIENTS and track their minutes using the RUG calculator.
+      li: h4 Add and Update THERAPIST Information
+      li: h4 SCHEDULE upcoming treatments
+      li: h4 REVIEW past treatments and archive them
+    h3 Don't worry, Runner can manage your RUGs...
+    h3 no matter how long they are.
+  .col-xs-2
+
+.row(ng-hide='email')
   .col-xs-4
   .col-xs-4
     #login(ng-show='logForm')
@@ -12,11 +26,7 @@
           label(for='password') Password
           input.form-control#password(type='password', name='password', ng-model='user.password', required, ng-minlength='3')
         button.btn.btn-primary(ng-show='userForm.$valid', ng-click='login()') Login
-  .col-xs-4
 
-.row
-  .col-xs-4
-  .col-xs-4
     #register(ng-hide='regForm')
         h3 Register
         h6: a(href='', ng-click='toggleReg(); toggleLog()') Login?
@@ -28,5 +38,5 @@
             label(for='password') Password
             input.form-control#password(type='password', name='password', ng-model='user.password', required, ng-minlength='3')
           button.btn.btn-primary(ng-show='userForm.$valid', ng-click='register()') Register
-    .col-xs-4
+  .col-xs-4
 

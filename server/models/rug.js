@@ -123,6 +123,7 @@ function iterator(tx, cb){
   var Client = require('./client');
   Client.findById(tx.clientId, function(err, client){
     tx.clientName = client.name;
+    tx.room       = client.current.room;
     cb(null, tx);
   });
 }

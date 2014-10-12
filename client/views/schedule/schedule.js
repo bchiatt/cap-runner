@@ -28,6 +28,7 @@
         if(!newValue || newValue === 'Add Tx'){return;}
         newValue = newValue.split(',');
         $scope.therapists.active[newValue[2].toLowerCase()][newValue[1]].treatments.push($scope.treatments[newValue[2].toLowerCase()][newValue[0]]);
+        $scope.therapists.active[newValue[2].toLowerCase()][newValue[1]].txMins += $scope.treatments[newValue[2].toLowerCase()][newValue[0]].mins * 1;
         $scope.treatments[newValue[2].toLowerCase()].splice(newValue[0], 1);
         $scope.tx.add = 'Add Tx';
       }

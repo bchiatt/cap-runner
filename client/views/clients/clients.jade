@@ -2,7 +2,7 @@
   .col-xs-3
     h2 Clients
     .row(ng-hide='add')
-      button.btn.btn-primary(ng-click='init()') Add Client
+      button.btn.btn-primary(ng-click='init()'): i.fa.fa-user &nbsp Add Client
       table.table.table-hover(ng-table='tableParams', show-filter='true')
         tbody
           tr(ng-repeat='client in display', data-title='{{client.name}}', data-index='{{$index}}', ng-click='makeCurrent($index)'): a(href='')
@@ -14,8 +14,8 @@
           label(for='newClient') New Client Name:
           input.form-control#newClient(required, ng-minlength='3', ng-model='newClient', type='text', autofocus)
 
-        button.btn.btn-warning(type='button', ng-click='cancel()') Cancel
-        button.btn.btn-primary.pull-right(ng-click='create()') Create New Client
+        button.btn.btn-warning(ng-click='cancel()') Cancel
+        button.btn.btn-primary.pull-right(ng-click='create()') Create
   .col-xs-1
   .col-xs-8
     .row(ng-show='client._id')
@@ -31,11 +31,12 @@
             .img(style='background-image: url("{{client.photo}}")')
         tab(heading='Rug')
           .row(ng-show='client._id')
-            button.btn.btn-primary.pull-right(type='button', ng-hide='editRug', ng-click='toggleRug()') Edit Rug
-            button.btn.btn-success.pull-right(type='button', ng-show='editRug', ng-click='saveRug()') Save Rug
+            button.btn.btn-primary.pull-right(ng-hide='editRug', ng-click='toggleRug()') Edit Rug
+            button.btn.btn-success.pull-right(ng-show='editRug', ng-click='saveRug()') Save Rug
 
-            .heading
-              table.table.table-bordered.table-hover
+          .row
+            .rug-heading
+              table.table.table-bordered.table-hover.calculator
                 thead
                   tr
                     th #
@@ -47,8 +48,8 @@
                     th ST
                     th Day Sum
                     th 7 Day Sum
-            .rug
-              table.table.table-bordered.table-hover
+            .rug-body
+              table.table.table-bordered.table-hover.calculator
                 tbody
                   tr(ng-show='editRug', ng-repeat='(key, value) in client.rug.calc')
                     td.cell {{$index + 1}}
@@ -129,7 +130,7 @@
         tab(heading='Edit')
           .row
             button.btn.btn-primary.pull-right(ng-click='save()') Save Client
-            button.btn.btn-danger.pull-right(type='button', ng-show='client._id', ng-click='remove()') Delete
+            button.btn.btn-danger.pull-right(ng-click='remove()') Delete
           div(accordion, close-others='true')
             accordion-group(is-open='general')
               accordion-heading(ng-click='general=!general')

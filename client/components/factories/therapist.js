@@ -12,11 +12,15 @@
       return $http.post('/therapists', therapist);
     }
 
+    function update(therapist){
+      return $http.put('/therapists', therapist);
+    }
+
     function remove(therapistId){
       return $http.delete('/therapists/'+ therapistId);
     }
 
-    return {all:all, add:add, remove:remove};
+    return {all:all, add:add, update:update, remove:remove};
   }]);
 })();
 

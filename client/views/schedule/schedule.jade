@@ -22,37 +22,40 @@
         tab(heading='All')
           h4 PT
           .therapist(ng-repeat='therapist in therapists.active.pt')
-            h4 {{therapist.name}}
-            form.form.inline-form
+            h4 {{therapist.name}} {{(therapist.txMins / therapist.schedule.mins) * 100 | number: 1}} %
+            hr
+            form.form.inline-form(ng-show='treatments.pt.length')
               label Add Treatment:
-              select.form-control(ng-model='tx.add', ng-show='treatments.pt.length')
+              select.form-control(ng-model='tx.add')
                 option(ng-repeat='tx in treatments.pt', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
-            ul
-              li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
+              hr
+            h5(ng-repeat='tx in therapist.treatments') {{tx.room}} {{tx.clientName}} {{tx.mins}} mins
           h4 OT
           .therapist(ng-repeat='therapist in therapists.active.ot')
             h4 {{therapist.name}}
-            form.form.inline-form
+            form.form.inline-form(ng-show='treatments.ot.length')
               label Add Treatment:
-              select.form-control(ng-model='tx.add', ng-show='treatments.ot.length')
+              select.form-control(ng-model='tx.add')
                 option(ng-repeat='tx in treatments.ot', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
             ul
               li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
+            h5(ng-repeat='tx in therapist.treatments') {{tx.room}} {{tx.clientName}} {{tx.mins}} mins
           h4 ST
           .therapist(ng-repeat='therapist in therapists.active.st')
             h4 {{therapist.name}}
-            form.form.inline-form
+            form.form.inline-form(ng-show='treatments.st.length')
               label Add Treatment:
-              select.form-control(ng-model='tx.add', ng-show='treatments.st.length')
+              select.form-control(ng-model='tx.add')
                 option(ng-repeat='tx in treatments.st', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
             ul
               li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
+            h5(ng-repeat='tx in therapist.treatments') {{tx.room}} {{tx.clientName}} {{tx.mins}} mins
         tab(heading='PT')
           .therapist(ng-repeat='therapist in therapists.active.pt')
             h4 {{therapist.name}}
             form.form.inline-form
               label Add Treatment:
-              select.form-control(ng-model='tx.add')
+              select.form-control(ng-model='tx.add', ng-show='treatments.pt.length')
                 option(ng-repeat='tx in treatments.pt', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
             ul
               li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
@@ -61,7 +64,7 @@
             h4 {{therapist.name}}
             form.form.inline-form
               label Add Treatment:
-              select.form-control(ng-model='tx.add')
+              select.form-control(ng-model='tx.add', ng-show='treatments.ot.length')
                 option(ng-repeat='tx in treatments.ot', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
             ul
               li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}
@@ -70,7 +73,7 @@
             h4 {{therapist.name}}
             form.form.inline-form
               label Add Treatment:
-              select.form-control(ng-model='tx.add')
+              select.form-control(ng-model='tx.add', ng-show='treatments.st.length')
                 option(ng-repeat='tx in treatments.st', value='{{$index + \',\' + $parent.$index + \',\' + tx.discipline}}') {{tx.mins}} {{tx.clientName}}
             ul
               li(ng-repeat='tx in therapist.treatments') {{tx.mins}} {{tx.clientName}}

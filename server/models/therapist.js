@@ -85,6 +85,7 @@ Therapist.getFuture = function(userId, date, cb){
   Therapist.all(userId, function(err, all){
     all.forEach(function(therapist){
       therapist.treatments = [];
+      therapist.txMins     = 0;
       if(therapist.isTherapist && therapist.schedule[date].mins){
         therapist.schedule = therapist.schedule[date];
         switch (therapist.discipline){

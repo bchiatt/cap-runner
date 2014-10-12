@@ -20,6 +20,7 @@
     $scope.save = function(){
       $scope.general = true;
       Client.update($scope.client).then(function(response){
+        toastr.success('Client saved.');
         $scope.clients = response.data.clients;
         $scope.tableParams.filter({});
         $scope.tableParams.sorting({name:'asc'});
