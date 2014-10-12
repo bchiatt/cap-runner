@@ -43,6 +43,7 @@ module.exports = function(app, express){
   app.post('/schedule/new', schedule.create);
   app.post('/schedule', schedule.futureDate);
   app.get('/treatments', treatments.getPast);
+  app.post('/treatments/unarchive', treatments.unArchive);
   app.post('/treatments', treatments.archive);
   app.put('/treatments', treatments.save);
   app.delete('/treatments/:id', treatments.remove);

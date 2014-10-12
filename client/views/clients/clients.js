@@ -3,11 +3,13 @@
 
   angular.module('runner')
   .controller('ClientsCtrl', ['$scope', '$q', '$filter', '$upload', 'ngTableParams', 'Client', 'Rug', function($scope, $q, $filter, $upload, ngTableParams, Client, Rug){
+    $scope.today   = new Date().setHours(0, 0, 0, 0);
     $scope.clients = [];
     $scope.options = [{id: true, title: 'Active'}, {id: false, title: 'Inactive'}];
     $scope.editRug = false;
     $scope.add     = false;
     $scope.client  = {};
+    $scope.color   = {};
     $scope.wkDays  = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
     $scope.wkNums  = [1, 2, 3, 4, 5, 6, 7];
     $scope.general = true;
@@ -174,14 +176,13 @@
       var sum     = $scope.actualWkSum.reduce(function(a, b){return a + b;});
       $scope.cumB = sum;
 
-      console.log(index, 'proj', $scope.cumA);
-      console.log(index, 'act', $scope.cumB);
+      $scope.color[index] = $scope.textColor($scope.cumB, $scope.cumA);
 
       return sum;
     };
 
-    $scope.textColor = function(){
-      if($scope.cumB >= $scope.cumA){
+    $scope.textColor = function(B, A){
+      if(B >= A){
         return 'good';
       }else{
         return 'bad';

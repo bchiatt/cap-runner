@@ -1,8 +1,9 @@
 .row
   .col-xs-3
     h2 Therapists
+    hr
     .row(ng-hide='add')
-      button.btn.btn-primary(ng-click='init()'): i.fa.fa-user &nbsp Add Therapist
+      button.btn.btn-success(ng-click='init()'): i.fa.fa-user &nbsp Add Therapist
       table.table.table-hover(ng-table='tableParams', show-filter='true')
         tbody
           tr(ng-repeat='therapist in display', data-title='{{therapist.name}}', data-index='{{$index}}', ng-click='makeCurrent($index)'): a(href='')
@@ -22,11 +23,24 @@
       tabset(justified='true')
         tab(heading='Profile')
           .col-xs-6
+            hr
             h3 {{therapist.name}}
-            h4 Discipline: {{therapist.discipline}}
-            h4 Is Therapist: {{therapist.isTherapist}}
-            h4 Productivity: {{therapist.productivity}}
-            h4 Is Full Time: {{therapist.isFullTime}}
+            hr
+            .col-xs-5
+              h4 Discipline:
+              br
+              h4 Type:
+              h4 Exp. Prod.:
+              h4 Status:
+            .col-xs-1
+            .col-xs-6
+              h4.info {{therapist.discipline}}
+              br
+              h4.info(ng-show='therapist.isTherapist') Therapist
+              h4.info(ng-hide='therapist.isTherapist') Assistant
+              h4.info {{therapist.productivity}}%
+              h4.info(ng-show='therapist.isFullTime') In-House Hire
+              h4.info(ng-hide='therapist.isFullTime') PRN Hire
           .col-xs-6
             .img(style='background-image: url("{{therapist.photo}}")')
         //tab(heading='Info')

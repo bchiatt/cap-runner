@@ -1,8 +1,9 @@
 .row
   .col-xs-3
     h2 Clients
+    hr
     .row(ng-hide='add')
-      button.btn.btn-primary(ng-click='init()'): i.fa.fa-user &nbsp Add Client
+      button.btn.btn-success(ng-click='init()'): i.fa.fa-user &nbsp Add Client
       table.table.table-hover(ng-table='tableParams', show-filter='true')
         tbody
           tr(ng-repeat='client in display', data-title='{{client.name}}', data-index='{{$index}}', ng-click='makeCurrent($index)'): a(href='')
@@ -22,11 +23,22 @@
       tabset(justified='true')
         tab(heading='Profile')
           .col-xs-6
+            hr
             h3 {{client.name}}
-            h4 Room: {{client.current.room}}
-            h4 Admitted: {{client.current.admitDate | date: 'MMM dd, yyyy'}}
-            h4 Next Recert: {{client.current.recertDate | date: 'MMM dd, yyyy'}}
-            h4 Expected DC: {{client.current.dcDate | date: 'MMM dd, yyyy'}}
+            hr
+            .col-xs-5
+              h4 Room:
+              br
+              h4 Admitted:
+              h4 Next Recert:
+              h4 Expected DC:
+            .col-xs-1
+            .col-xs-6
+              h4.info {{client.current.room}}
+              br
+              h4.info {{client.current.admitDate | date: 'MMM dd, yyyy'}}
+              h4.info {{client.current.recertDate | date: 'MMM dd, yyyy'}}
+              h4.info {{client.current.dcDate | date: 'MMM dd, yyyy'}}
           .col-xs-6
             .img(style='background-image: url("{{client.photo}}")')
         tab(heading='Rug')
@@ -36,7 +48,7 @@
 
           .row
             .rug-heading
-              table.table.table-bordered.table-hover.calculator
+              table.table.calculator
                 thead
                   tr
                     th #
@@ -47,54 +59,60 @@
                     th OT
                     th ST
                     th Day Sum
-                    th 7 Day Sum
+                    th Wk Sum
             .rug-body
               table.table.table-bordered.table-hover.calculator
                 tbody
-                  tr(ng-show='editRug', ng-repeat='(key, value) in client.rug.calc')
-                    td.cell {{$index + 1}}
-                    td.cell {{key | date: 'MMM dd'}}
-                    td.cell {{key | date: 'EEE'}}
-                    td.cell
+                  tr(ng-show='editRug', ng-repeat='(key, value) in client.rug.calc', ng-class='{today: key == today}')
+                    td.cell.bold {{$index + 1}}
+                    td.cell.bold {{key | date: 'MMM dd'}}
+                    td.cell {{key | date: 'EEEE'}}
+                    td.cell.bold
                       table
                         tr
-                          td.cell Proj
+                          td.cell.right Projected:
                         tr
-                          td.cell Act
+                          td.cell.right Actual:
                     td.cell
                       table
                         tr
                           td.cell: input.form-control(type='number', ng-model='value.pt.proj')
                         tr
-                          td.cell {{value.pt.actual}}
+                          td.cell.left {{value.pt.actual}}
                     td.cell
                       table
                         tr
                           td.cell: input.form-control(type='number', ng-model='value.ot.proj')
                         tr
-                          td.cell {{value.ot.actual}}
+                          td.cell.left {{value.ot.actual}}
                     td.cell
                       table
                         tr
                           td.cell: input.form-control(type='number', ng-model='value.st.proj')
                         tr
-                          td.cell {{value.st.actual}}
-                    td.cell
+                          td.cell.left {{value.st.actual}}
+                    td.cell.bold
                       table
                         tr
-                          td.cell {{value.pt.proj + value.ot.proj + value.st.proj}}
+                          td.cell {{projSumDay(value.pt.proj, value.ot.proj, value.st.proj, $index)}}
                         tr
-                          td.cell {{value.pt.actual + value.ot.actual + value.st.actual}}
-                  tr(ng-hide='editRug', ng-repeat='(key, value) in client.rug.calc')
-                    td.cell {{$index + 1}}
-                    td.cell {{key | date: 'MMM dd'}}
-                    td.cell {{key | date: 'EEE'}}
-                    td.cell
+                          td.cell(ng-class='color[$index]') {{actualSumDay(value.pt.actual, value.ot.actual, value.st.actual, $index)}}
+                    td.cell.bold
                       table
                         tr
-                          td.cell Projected
+                          td.cell {{projSumWeek(value.pt.proj, value.ot.proj, value.st.proj, $index)}}
                         tr
-                          td.cell Actual
+                          td.cell(ng-class='color[$index]') {{actualSumWeek(value.pt.actual, value.ot.actual, value.st.actual, $index)}}
+                  tr(ng-hide='editRug', ng-repeat='(key, value) in client.rug.calc', ng-class='{today: key == today}')
+                    td.cell.bold {{$index + 1}}
+                    td.cell.bold {{key | date: 'MMM dd'}}
+                    td.cell {{key | date: 'EEEE'}}
+                    td.cell.bold
+                      table
+                        tr
+                          td.cell.right Projected:
+                        tr
+                          td.cell.right Actual:
                     td.cell
                       table
                         tr
@@ -113,19 +131,19 @@
                           td.cell {{value.st.proj}}
                         tr
                           td.cell {{value.st.actual}}
-                    td.cell
+                    td.cell.bold
                       table
                         tr
                           td.cell {{projSumDay(value.pt.proj, value.ot.proj, value.st.proj, $index)}}
                         tr
                           td.cell {{actualSumDay(value.pt.actual, value.ot.actual, value.st.actual, $index)}}
-                    td.cell
+                    td.cell.bold
                       table
                         tr
                           td.cell {{projSumWeek(value.pt.proj, value.ot.proj, value.st.proj, $index)}}
                         tr
-                          td.cell(ng-class='textColor()') {{actualSumWeek(value.pt.actual, value.ot.actual, value.st.actual, $index)}}
-        tab(heading='Info')
+                          td.cell(ng-class='color[$index]') {{actualSumWeek(value.pt.actual, value.ot.actual, value.st.actual, $index)}}
+        //tab(heading='Info')
           | Client Info
         tab(heading='Edit')
           .row
