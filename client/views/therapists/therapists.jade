@@ -13,10 +13,17 @@
       form.form(role='form', novalidate, name='editForm')
         .form-group
           label(for='newTherapist') New Therapist Name:
-          input.form-control#newTherapist(required, ng-minlength='3', ng-model='newTherapist', type='text', autofocus)
+          input.form-control#newTherapist(required, ng-minlength='3', ng-model='newTherapist.name', type='text', autofocus)
+        .form-group
+          label(for='disciplineNew') New Therapist Discipline:
+          select.form-control#disciplineNew(required, ng-model='newTherapist.discipline', name='discipline')
+            option(value='') Select Discipline
+            option PT
+            option OT
+            option ST
 
         button.btn.btn-warning(type='button', ng-click='cancel()') Cancel
-        button.btn.btn-primary.pull-right(ng-click='create()') Create
+        button.btn.btn-primary.pull-right(ng-show='editForm.$valid', ng-click='create()') Create
   .col-xs-1
   .col-xs-8
     .row(ng-show='therapist._id')
@@ -47,7 +54,7 @@
           | Display Therapist Info Here
         tab(heading='Edit', ng-click='editTherapist()')
           .row
-            button.btn.btn-primary.pull-right(ng-click='add()') Save Therapist
+            button.btn.btn-primary.pull-right(ng-click='save()') Save Therapist
             button.btn.btn-danger.pull-right(ng-click='remove()') Delete
           div(accordion, close-others='true')
             accordion-group(is-open='general')

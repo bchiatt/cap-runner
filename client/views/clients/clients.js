@@ -31,6 +31,7 @@
 
     $scope.init = function(){
       $scope.client  = {};
+      $scope.newClient = {};
       $scope.add     = true;
     };
 
