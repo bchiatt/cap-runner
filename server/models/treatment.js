@@ -88,6 +88,12 @@ Treatment.archive = function(tx, cb){
   });
 };
 
+Treatment.unArchive = function(id, cb){
+  var _id = Mongo.ObjectID(id);
+
+  Treatment.collection.findAndModify({_id:_id}, {}, {$set: {isArchived: false}}, cb);
+};
+
 Treatment.remove = function(id, cb){
   var _id = Mongo.ObjectID(id);
   Treatment.collection.remove({_id:_id}, cb);

@@ -1,11 +1,12 @@
 .row
   .col-xs-3
     h2 Schedule
+    hr
     form.form(role='form', novalidate, name='selectDate')
       .form-group
         label(for='date') Choose Date: &nbsp
         input.form-control#date(type='date', ng-model='txDate', required, autfocus)
-      button.btn.btn-success(type='submit', ng-show='selectDate.$valid', ng-click='getFutureTreatments()') Get Treatments
+      button.btn.btn-success.schedule(type='submit', ng-show='selectDate.$valid', ng-click='getFutureTreatments()') Get Treatments
     b
     label(ng-show='treatments') Add Therapist:
     select.form-control#addTherapist(name='addTherapist', ng-model='addTherapist', ng-show='treatments')
@@ -27,7 +28,7 @@
               {{therapist.name}} {{(therapist.txMins / therapist.schedule.mins) * 100 | number: 1}}%
             .form-inline(ng-show='editMins[therapist._id]')
               label Work Mins Today: &nbsp
-              input.form-control(type='text', ng-model='therapist.schedule.mins')
+              input.form-control.therMins(type='text', ng-model='therapist.schedule.mins')
             .form-inline(ng-show='editMins[therapist._id]')
               label Tx Mins Today: &nbsp &nbsp &nbsp
               input.form-control(type='text', disabled, ng-model='therapist.txMins')
@@ -47,6 +48,12 @@
             h4
               a(href='', ng-click='edit([therapist._id])'): i.fa.fa-edit &nbsp
               {{therapist.name}} {{(therapist.txMins / therapist.schedule.mins) * 100 | number: 1}}%
+            .form-inline(ng-show='editMins[therapist._id]')
+              label Work Mins Today: &nbsp
+              input.form-control.therMins(type='text', ng-model='therapist.schedule.mins')
+            .form-inline(ng-show='editMins[therapist._id]')
+              label Tx Mins Today: &nbsp &nbsp &nbsp
+              input.form-control(type='text', disabled, ng-model='therapist.txMins')
             hr(ng-show='therapist.treatments[0]')
             h5(ng-repeat='tx in therapist.treatments')
               a(href='', ng-click='undoTx($index + \',\' + $parent.$index + \',\' + tx.discipline)'): i.fa.fa-remove
@@ -63,6 +70,12 @@
             h4
               a(href='', ng-click='edit([therapist._id])'): i.fa.fa-edit &nbsp
               {{therapist.name}} {{(therapist.txMins / therapist.schedule.mins) * 100 | number: 1}}%
+            .form-inline(ng-show='editMins[therapist._id]')
+              label Work Mins Today: &nbsp
+              input.form-control.therMins(type='text', ng-model='therapist.schedule.mins')
+            .form-inline(ng-show='editMins[therapist._id]')
+              label Tx Mins Today: &nbsp &nbsp &nbsp
+              input.form-control(type='text', disabled, ng-model='therapist.txMins')
             hr(ng-show='therapist.treatments[0]')
             h5(ng-repeat='tx in therapist.treatments')
               a(href='', ng-click='undoTx($index + \',\' + $parent.$index + \',\' + tx.discipline)'): i.fa.fa-remove
@@ -79,6 +92,12 @@
             h4
               a(href='', ng-click='edit([therapist._id])'): i.fa.fa-edit &nbsp
               {{therapist.name}} {{(therapist.txMins / therapist.schedule.mins) * 100 | number: 1}}%
+            .form-inline(ng-show='editMins[therapist._id]')
+              label Work Mins Today: &nbsp
+              input.form-control.therMins(type='text', ng-model='therapist.schedule.mins')
+            .form-inline(ng-show='editMins[therapist._id]')
+              label Tx Mins Today: &nbsp &nbsp &nbsp
+              input.form-control(type='text', disabled, ng-model='therapist.txMins')
             hr(ng-show='therapist.treatments[0]')
             h5(ng-repeat='tx in therapist.treatments')
               a(href='', ng-click='undoTx($index + \',\' + $parent.$index + \',\' + tx.discipline)'): i.fa.fa-remove
@@ -95,6 +114,12 @@
             h4
               a(href='', ng-click='edit([therapist._id])'): i.fa.fa-edit &nbsp
               {{therapist.name}} {{(therapist.txMins / therapist.schedule.mins) * 100 | number: 1}}%
+            .form-inline(ng-show='editMins[therapist._id]')
+              label Work Mins Today: &nbsp
+              input.form-control.therMins(type='text', ng-model='therapist.schedule.mins')
+            .form-inline(ng-show='editMins[therapist._id]')
+              label Tx Mins Today: &nbsp &nbsp &nbsp
+              input.form-control(type='text', disabled, ng-model='therapist.txMins')
             hr(ng-show='therapist.treatments[0]')
             h5(ng-repeat='tx in therapist.treatments')
               a(href='', ng-click='undoTx($index + \',\' + $parent.$index + \',\' + tx.discipline)'): i.fa.fa-remove
@@ -111,6 +136,12 @@
             h4
               a(href='', ng-click='edit([therapist._id])'): i.fa.fa-edit &nbsp
               {{therapist.name}} {{(therapist.txMins / therapist.schedule.mins) * 100 | number: 1}}%
+            .form-inline(ng-show='editMins[therapist._id]')
+              label Work Mins Today: &nbsp
+              input.form-control.therMins(type='text', ng-model='therapist.schedule.mins')
+            .form-inline(ng-show='editMins[therapist._id]')
+              label Tx Mins Today: &nbsp &nbsp &nbsp
+              input.form-control(type='text', disabled, ng-model='therapist.txMins')
             hr(ng-show='therapist.treatments[0]')
             h5(ng-repeat='tx in therapist.treatments')
               a(href='', ng-click='undoTx($index + \',\' + $parent.$index + \',\' + tx.discipline)'): i.fa.fa-remove

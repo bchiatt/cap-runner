@@ -25,3 +25,9 @@ exports.remove = function(req, res){
     res.status(200).end();
   });
 };
+
+exports.unArchive = function(req, res){
+  Treatment.unArchive(req.body.id, function(){
+    res.status(200).end();
+  });
+};

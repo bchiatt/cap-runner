@@ -1,8 +1,9 @@
 .row
   .col-xs-3
     h2 Therapists
+    hr
     .row(ng-hide='add')
-      button.btn.btn-primary(ng-click='init()'): i.fa.fa-user &nbsp Add Therapist
+      button.btn.btn-success(ng-click='init()'): i.fa.fa-user &nbsp Add Therapist
       table.table.table-hover(ng-table='tableParams', show-filter='true')
         tbody
           tr(ng-repeat='therapist in display', data-title='{{therapist.name}}', data-index='{{$index}}', ng-click='makeCurrent($index)'): a(href='')
@@ -12,28 +13,48 @@
       form.form(role='form', novalidate, name='editForm')
         .form-group
           label(for='newTherapist') New Therapist Name:
-          input.form-control#newTherapist(required, ng-minlength='3', ng-model='newTherapist', type='text', autofocus)
+          input.form-control#newTherapist(required, ng-minlength='3', ng-model='newTherapist.name', type='text', autofocus)
+        .form-group
+          label(for='disciplineNew') New Therapist Discipline:
+          select.form-control#disciplineNew(required, ng-model='newTherapist.discipline', name='discipline')
+            option(value='') Select Discipline
+            option PT
+            option OT
+            option ST
 
         button.btn.btn-warning(type='button', ng-click='cancel()') Cancel
-        button.btn.btn-primary.pull-right(ng-click='create()') Create
+        button.btn.btn-primary.pull-right(ng-show='editForm.$valid', ng-click='create()') Create
   .col-xs-1
   .col-xs-8
     .row(ng-show='therapist._id')
       tabset(justified='true')
         tab(heading='Profile')
           .col-xs-6
+            hr
             h3 {{therapist.name}}
-            h4 Discipline: {{therapist.discipline}}
-            h4 Is Therapist: {{therapist.isTherapist}}
-            h4 Productivity: {{therapist.productivity}}
-            h4 Is Full Time: {{therapist.isFullTime}}
+            hr
+            .col-xs-5
+              h4 Discipline:
+              br
+              h4 Type:
+              h4 Exp. Prod.:
+              h4 Status:
+            .col-xs-1
+            .col-xs-6
+              h4.info {{therapist.discipline}}
+              br
+              h4.info(ng-show='therapist.isTherapist') Therapist
+              h4.info(ng-hide='therapist.isTherapist') Assistant
+              h4.info {{therapist.productivity}}%
+              h4.info(ng-show='therapist.isFullTime') In-House Hire
+              h4.info(ng-hide='therapist.isFullTime') PRN Hire
           .col-xs-6
             .img(style='background-image: url("{{therapist.photo}}")')
         //tab(heading='Info')
           | Display Therapist Info Here
         tab(heading='Edit', ng-click='editTherapist()')
           .row
-            button.btn.btn-primary.pull-right(ng-click='add()') Save Therapist
+            button.btn.btn-primary.pull-right(ng-click='save()') Save Therapist
             button.btn.btn-danger.pull-right(ng-click='remove()') Delete
           div(accordion, close-others='true')
             accordion-group(is-open='general')

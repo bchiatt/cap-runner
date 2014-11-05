@@ -9,17 +9,27 @@ function Therapist(userId, obj){
   this.userId        = Mongo.ObjectID(userId);
   this.name          = obj.name;
   this.discipline    = obj.discipline;
-  this.productivity  = obj.productivity * 1;
+  this.productivity  = obj.productivity * 1 || null;
   this.isTherapist   = (obj.isTherapist ? true : false);
   this.isFullTime    = (obj.isFullTime ? true : false);
   this.photo         = '/assets/img/default.jpg';
-  this.lateEvals     = {
-                 mon : obj.lateEvals.mon || false,
-                 tue : obj.lateEvals.tue || false,
-                 wed : obj.lateEvals.wed || false,
-                 thu : obj.lateEvals.thu || false,
-                 fri : obj.lateEvals.fri || false
-  };
+  this.lateEvals     = obj.lateEvals || {
+                                          mon : false,
+                                          tue : false,
+                                          wed : false,
+                                          thu : false,
+                                          fri : false
+                                        };
+  if(obj.lateEvals){
+    this.lateEvals     = {
+      mon : obj.lateEvals.mon || false,
+      tue : obj.lateEvals.tue || false,
+      wed : obj.lateEvals.wed || false,
+      thu : obj.lateEvals.thu || false,
+      fri : obj.lateEvals.fri || false
+    };
+  }
+
   this.schedule      = obj.schedule || {};
 }
 
@@ -41,9 +51,9 @@ Therapist.create = function(userId, obj, cb){
   Therapist.collection.save(obj, cb);
 };
 
-Therapist.update = function(obj, cb){
+Therapist.update = function(userId, obj, cb){
   obj._id    = Mongo.ObjectID(obj._id);
-  obj.userId = Mongo.ObjectID(obj.userId);
+  obj.userId = Mongo.ObjectID(userId);
   Therapist.collection.save(obj, cb);
 };
 

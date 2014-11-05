@@ -28,7 +28,19 @@
       return $http.delete('/treatments/' + id);
     }
 
-    return {getFuture:getFuture, schedule:schedule, getPast:getPast, archive:archive, save:save, remove:remove};
+    function unArchive(id){
+      return $http.post('/treatments/unarchive', {id: id});
+    }
+
+    return {
+      getFuture:getFuture,
+      schedule:schedule,
+      getPast:getPast,
+      archive:archive,
+      save:save,
+      remove:remove,
+      unArchive:unArchive
+    };
   }]);
 })();
 

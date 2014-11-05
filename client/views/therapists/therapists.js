@@ -16,6 +16,7 @@
 
     $scope.save = function(){
       $scope.general = true;
+      console.log($scope.therapist);
       Therapist.update($scope.therapist).then(function(response){
         toastr.success('Therapist saved.');
         $scope.therapists = response.data.therapists;
@@ -25,8 +26,9 @@
     };
 
     $scope.init = function(){
-      $scope.therapist = {};
-      $scope.add       = true;
+      $scope.therapist    = {};
+      $scope.newTherapist = {};
+      $scope.add          = true;
     };
 
     $scope.cancel = function(){
@@ -34,8 +36,9 @@
     };
 
     $scope.create = function(){
-      Therapist.add($scope.therapist).then(function(response){
+      Therapist.add($scope.newTherapist).then(function(response){
         $scope.add = false;
+        $scope.newTherapist = {};
         $scope.therapists = response.data.therapists;
         $scope.tableParams.filter({});
         $scope.tableParams.sorting({name:'asc'});
