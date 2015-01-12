@@ -55,7 +55,7 @@ $ npm test
 - [Brian Hiatt](https://github.com/bchiatt)
 
 ### Hosted At
-[Runn](http://runner.bchiatt.co)
+[Runner](http://runner.bchiatt.co)
 
 ### License
 [MIT](LICENSE)
